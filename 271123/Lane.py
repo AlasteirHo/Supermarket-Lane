@@ -36,6 +36,7 @@ class Lane(Checkout):
 
 b = Lane()
 b.create_first_lane()
+print("Testing")
 
 
 
