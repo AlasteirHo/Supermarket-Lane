@@ -7,11 +7,17 @@ class Lane(Checkout):
         super().__init__()
 
     def extract_ordered_customers(self):
-        with open("StoringData\OrderedCustomers.json", "r") as f:
+        with open("StoringData/OrderedCustomers.json", "r") as f:
             data = json.load(f)
         return data
 
 
+    def get_data(self):
+        a = self.extract_ordered_customers()
+        print(a)
+
+b = Lane()
+b.get_data()
 
 
 

@@ -1,58 +1,46 @@
 {
-  "Customer6": {
+  "Customer19": {
     "Item In Basket": 10,
     "Lane Type": "Cashier"
   },
-  "Customer12": {
-    "Item In Basket": 10,
-    "Lane Type": "Cashier"
-  },
-  "Customer9": {
-    "Item In Basket": 11,
-    "Lane Type": "Cashier"
-  },
-  "Customer2": {
+  "Customer15": {
     "Item In Basket": 12,
     "Lane Type": "Cashier"
   },
   "Customer17": {
-    "Item In Basket": 12,
+    "Item In Basket": 15,
     "Lane Type": "Cashier"
   },
-  "Customer14": {
-    "Item In Basket": 19,
+  "Customer5": {
+    "Item In Basket": 18,
     "Lane Type": "Cashier"
   },
   "Customer8": {
     "Item In Basket": 20,
     "Lane Type": "Cashier"
   },
-  "Customer10": {
-    "Item In Basket": 23,
-    "Lane Type": "Cashier"
-  },
-  "Customer15": {
-    "Item In Basket": 27,
+  "Customer16": {
+    "Item In Basket": 22,
     "Lane Type": "Cashier"
   },
   "Customer1": {
+    "Item In Basket": 26,
+    "Lane Type": "Cashier"
+  },
+  "Customer3": {
+    "Item In Basket": 27,
+    "Lane Type": "Cashier"
+  },
+  "Customer6": {
     "Item In Basket": 28,
     "Lane Type": "Cashier"
   },
-  "Customer18": {
-    "Item In Basket": 29,
-    "Lane Type": "Cashier"
-  },
-  "Customer7": {
-    "Item In Basket": 30,
-    "Lane Type": "Cashier"
-  },
   "Customer11": {
-    "Item In Basket": 30,
+    "Item In Basket": 28,
     "Lane Type": "Cashier"
   },
-  "Customer19": {
-    "Item In Basket": 30,
+  "Customer4": {
+    "Item In Basket": 29,
     "Lane Type": "Cashier"
   }
 }

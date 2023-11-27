@@ -1,21 +1,33 @@
 {
-  "Customer5": {
-    "Item In Basket": 2,
+  "Customer2": {
+    "Item In Basket": 3,
     "Lane Type": "Self Checkout"
   },
-  "Customer3": {
-    "Item In Basket": 4,
+  "Customer9": {
+    "Item In Basket": 3,
+    "Lane Type": "Self Checkout"
+  },
+  "Customer12": {
+    "Item In Basket": 3,
+    "Lane Type": "Self Checkout"
+  },
+  "Customer14": {
+    "Item In Basket": 3,
+    "Lane Type": "Self Checkout"
+  },
+  "Customer10": {
+    "Item In Basket": 5,
     "Lane Type": "Self Checkout"
   },
   "Customer13": {
-    "Item In Basket": 4,
+    "Item In Basket": 5,
     "Lane Type": "Self Checkout"
   },
-  "Customer16": {
-    "Item In Basket": 4,
+  "Customer18": {
+    "Item In Basket": 7,
     "Lane Type": "Self Checkout"
   },
-  "Customer4": {
+  "Customer7": {
     "Item In Basket": 9,
     "Lane Type": "Self Checkout"
   }

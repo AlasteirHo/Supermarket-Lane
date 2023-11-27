@@ -1,97 +1,97 @@
 {
-  "Customer5": {
-    "UniqueIdentifier": "H2",
-    "Items": 2,
-    "ProcessTime": 8
+  "Customer2": {
+    "UniqueIdentifier": "D2",
+    "Items": 3,
+    "ProcessTime": 12
   },
-  "Customer3": {
-    "UniqueIdentifier": "F8",
-    "Items": 4,
-    "ProcessTime": 16
+  "Customer9": {
+    "UniqueIdentifier": "I2",
+    "Items": 3,
+    "ProcessTime": 12
+  },
+  "Customer12": {
+    "UniqueIdentifier": "J5",
+    "Items": 3,
+    "ProcessTime": 12
+  },
+  "Customer14": {
+    "UniqueIdentifier": "J9",
+    "Items": 3,
+    "ProcessTime": 12
+  },
+  "Customer10": {
+    "UniqueIdentifier": "K8",
+    "Items": 5,
+    "ProcessTime": 20
   },
   "Customer13": {
-    "UniqueIdentifier": "B2",
-    "Items": 4,
-    "ProcessTime": 16
+    "UniqueIdentifier": "L8",
+    "Items": 5,
+    "ProcessTime": 20
   },
-  "Customer16": {
-    "UniqueIdentifier": "I8",
-    "Items": 4,
-    "ProcessTime": 16
+  "Customer18": {
+    "UniqueIdentifier": "B1",
+    "Items": 7,
+    "ProcessTime": 28
   },
-  "Customer4": {
-    "UniqueIdentifier": "B3",
+  "Customer7": {
+    "UniqueIdentifier": "E3",
     "Items": 9,
     "ProcessTime": 36
   },
-  "Customer6": {
-    "UniqueIdentifier": "J8",
+  "Customer19": {
+    "UniqueIdentifier": "L1",
     "Items": 10,
     "ProcessTime": 40
   },
-  "Customer12": {
-    "UniqueIdentifier": "C6",
-    "Items": 10,
-    "ProcessTime": 40
-  },
-  "Customer9": {
-    "UniqueIdentifier": "E9",
-    "Items": 11,
-    "ProcessTime": 44
-  },
-  "Customer2": {
-    "UniqueIdentifier": "L5",
+  "Customer15": {
+    "UniqueIdentifier": "I8",
     "Items": 12,
     "ProcessTime": 48
   },
   "Customer17": {
-    "UniqueIdentifier": "J5",
-    "Items": 12,
-    "ProcessTime": 48
+    "UniqueIdentifier": "D6",
+    "Items": 15,
+    "ProcessTime": 60
   },
-  "Customer14": {
-    "UniqueIdentifier": "K1",
-    "Items": 19,
-    "ProcessTime": 76
+  "Customer5": {
+    "UniqueIdentifier": "C3",
+    "Items": 18,
+    "ProcessTime": 72
   },
   "Customer8": {
-    "UniqueIdentifier": "D9",
+    "UniqueIdentifier": "C4",
     "Items": 20,
     "ProcessTime": 80
   },
-  "Customer10": {
-    "UniqueIdentifier": "E1",
-    "Items": 23,
-    "ProcessTime": 92
+  "Customer16": {
+    "UniqueIdentifier": "L7",
+    "Items": 22,
+    "ProcessTime": 88
   },
-  "Customer15": {
-    "UniqueIdentifier": "C6",
+  "Customer1": {
+    "UniqueIdentifier": "A9",
+    "Items": 26,
+    "ProcessTime": 104
+  },
+  "Customer3": {
+    "UniqueIdentifier": "I6",
     "Items": 27,
     "ProcessTime": 108
   },
-  "Customer1": {
-    "UniqueIdentifier": "J1",
+  "Customer6": {
+    "UniqueIdentifier": "I2",
     "Items": 28,
     "ProcessTime": 112
   },
-  "Customer18": {
-    "UniqueIdentifier": "J7",
+  "Customer11": {
+    "UniqueIdentifier": "H4",
+    "Items": 28,
+    "ProcessTime": 112
+  },
+  "Customer4": {
+    "UniqueIdentifier": "H2",
     "Items": 29,
     "ProcessTime": 116
-  },
-  "Customer7": {
-    "UniqueIdentifier": "B5",
-    "Items": 30,
-    "ProcessTime": 120
-  },
-  "Customer11": {
-    "UniqueIdentifier": "C7",
-    "Items": 30,
-    "ProcessTime": 120
-  },
-  "Customer19": {
-    "UniqueIdentifier": "J9",
-    "Items": 30,
-    "ProcessTime": 120
   }
 }

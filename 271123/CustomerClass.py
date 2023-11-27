@@ -56,6 +56,6 @@ class Customer:
 #
 # print(my_dict)
 
-Customer1 = Customer()
-Customer1.processingtime()
-Customer1.createCustomerDict()
+# Customer1 = Customer()
+# Customer1.processingtime()
+# Customer1.createCustomerDict()
