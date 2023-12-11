@@ -1,34 +1,46 @@
 {
-  "Customer2": {
-    "Item In Basket": 3,
-    "Lane Type": "Self Checkout"
+  "Customer19": {
+    "Items In Basket": 10,
+    "Lane Type": "Cashier"
   },
-  "Customer9": {
-    "Item In Basket": 3,
-    "Lane Type": "Self Checkout"
+  "Customer15": {
+    "Items In Basket": 12,
+    "Lane Type": "Cashier"
   },
-  "Customer12": {
-    "Item In Basket": 3,
-    "Lane Type": "Self Checkout"
+  "Customer17": {
+    "Items In Basket": 15,
+    "Lane Type": "Cashier"
   },
-  "Customer14": {
-    "Item In Basket": 3,
-    "Lane Type": "Self Checkout"
+  "Customer5": {
+    "Items In Basket": 18,
+    "Lane Type": "Cashier"
   },
-  "Customer10": {
-    "Item In Basket": 5,
-    "Lane Type": "Self Checkout"
+  "Customer8": {
+    "Items In Basket": 20,
+    "Lane Type": "Cashier"
   },
-  "Customer13": {
-    "Item In Basket": 5,
-    "Lane Type": "Self Checkout"
+  "Customer16": {
+    "Items In Basket": 22,
+    "Lane Type": "Cashier"
   },
-  "Customer18": {
-    "Item In Basket": 7,
-    "Lane Type": "Self Checkout"
+  "Customer1": {
+    "Items In Basket": 26,
+    "Lane Type": "Cashier"
   },
-  "Customer7": {
-    "Item In Basket": 9,
-    "Lane Type": "Self Checkout"
+  "Customer3": {
+    "Items In Basket": 27,
+    "Lane Type": "Cashier"
+  },
+  "Customer6": {
+    "Items In Basket": 28,
+    "Lane Type": "Cashier"
+  },
+  "Customer11": {
+    "Items In Basket": 28,
+    "Lane Type": "Cashier"
+  },
+  "Customer4": {
+    "Items In Basket": 29,
+    "Lane Type": "Cashier"
   }
 }

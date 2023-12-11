@@ -69,30 +69,30 @@ class Checkout:
         return self.ordered_dict_items
 
 
-    def SortIntoSelfCheckout(self):
-        ordered_data = self.SortCustomer()
-        print(ordered_data)
-
-        for keys in ordered_data:
-            if ordered_data[keys]["Items"] >= 10:
-                # print(f"{keys}: {ordered_data[keys]['Items']}")
-                self.CashierCheckoutCustomers.update({
-                    keys: {
-                        "Item In Basket": ordered_data[keys]["Items"],
-                        "Lane Type": "Cashier"
-                    }
-                })
-
-            else:
-                # print(f"{keys}: {ordered_data[keys]['Items']}")
-                self.SelfCheckoutCustomers.update({
-                    keys: {
-                        "Item In Basket": ordered_data[keys]["Items"],
-                        "Lane Type": "Self Checkout"
-                    }
-                })
-
-        return self.CashierCheckoutCustomers, self.SelfCheckoutCustomers
+    # def SortIntoSelfCheckout(self):
+    #     ordered_data = self.SortCustomer()
+    #     print(ordered_data)
+    #
+    #     for keys in ordered_data:
+    #         if ordered_data[keys]["Items"] >= 10:
+    #             # print(f"{keys}: {ordered_data[keys]['Items']}")
+    #             self.CashierCheckoutCustomers.update({
+    #                 keys: {
+    #                     "Item In Basket": ordered_data[keys]["Items"],
+    #                     "Lane Type": "Cashier"
+    #                 }
+    #             })
+    #
+    #         else:
+    #             # print(f"{keys}: {ordered_data[keys]['Items']}")
+    #             self.SelfCheckoutCustomers.update({
+    #                 keys: {
+    #                     "Item In Basket": ordered_data[keys]["Items"],
+    #                     "Lane Type": "Self Checkout"
+    #                 }
+    #             })
+    #
+    #     return self.CashierCheckoutCustomers, self.SelfCheckoutCustomers
 
     def CreateSelfCheckoutFile(self):
         result = self.SortIntoSelfCheckout()[1]
@@ -104,6 +104,8 @@ class Checkout:
         with open ("StoringData/Cashier.json", "w") as f:
             f.write(json.dumps(result,indent=2))
 
+    def DisplayLaneStatus(self):
+        #This will output the lane status.
 
 
 
