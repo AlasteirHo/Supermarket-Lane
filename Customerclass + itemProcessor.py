@@ -39,7 +39,7 @@ class Customer:
                 "Time at Self-Service": customer.processing_time_self_checkout
             }
 
-        with open("customer_data.json", "w") as json_file:
+        with open("271123/StoringData/customer_data.json", "w") as json_file:
             json.dump(customer_data, json_file, indent=4)
 
 

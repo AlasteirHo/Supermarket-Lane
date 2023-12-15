@@ -1,97 +1,51 @@
 {
-  "Customer2": {
-    "UniqueIdentifier": "D2",
-    "Items": 3,
-    "ProcessTime": 12
+  "Customer 1": {
+    "CustomerID": "C1",
+    "Basket Size": 2,
+    "Lottery Ticket": false,
+    "Time at Cashier": 12,
+    "Time at Self-Service": 8
   },
-  "Customer9": {
-    "UniqueIdentifier": "I2",
-    "Items": 3,
-    "ProcessTime": 12
+  "Customer 3": {
+    "CustomerID": "C3",
+    "Basket Size": 5,
+    "Lottery Ticket": false,
+    "Time at Cashier": 30,
+    "Time at Self-Service": 20
   },
-  "Customer12": {
-    "UniqueIdentifier": "J5",
-    "Items": 3,
-    "ProcessTime": 12
+  "Customer 6": {
+    "CustomerID": "C6",
+    "Basket Size": 7,
+    "Lottery Ticket": false,
+    "Time at Cashier": 42,
+    "Time at Self-Service": 28
   },
-  "Customer14": {
-    "UniqueIdentifier": "J9",
-    "Items": 3,
-    "ProcessTime": 12
+  "Customer 2": {
+    "CustomerID": "C2",
+    "Basket Size": 14,
+    "Lottery Ticket": true,
+    "Time at Cashier": 84,
+    "Time at Self-Service": 56
   },
-  "Customer10": {
-    "UniqueIdentifier": "K8",
-    "Items": 5,
-    "ProcessTime": 20
+  "Customer 4": {
+    "CustomerID": "C4",
+    "Basket Size": 14,
+    "Lottery Ticket": true,
+    "Time at Cashier": 84,
+    "Time at Self-Service": 56
   },
-  "Customer13": {
-    "UniqueIdentifier": "L8",
-    "Items": 5,
-    "ProcessTime": 20
+  "Customer 7": {
+    "CustomerID": "C7",
+    "Basket Size": 15,
+    "Lottery Ticket": true,
+    "Time at Cashier": 90,
+    "Time at Self-Service": 60
   },
-  "Customer18": {
-    "UniqueIdentifier": "B1",
-    "Items": 7,
-    "ProcessTime": 28
-  },
-  "Customer7": {
-    "UniqueIdentifier": "E3",
-    "Items": 9,
-    "ProcessTime": 36
-  },
-  "Customer19": {
-    "UniqueIdentifier": "L1",
-    "Items": 10,
-    "ProcessTime": 40
-  },
-  "Customer15": {
-    "UniqueIdentifier": "I8",
-    "Items": 12,
-    "ProcessTime": 48
-  },
-  "Customer17": {
-    "UniqueIdentifier": "D6",
-    "Items": 15,
-    "ProcessTime": 60
-  },
-  "Customer5": {
-    "UniqueIdentifier": "C3",
-    "Items": 18,
-    "ProcessTime": 72
-  },
-  "Customer8": {
-    "UniqueIdentifier": "C4",
-    "Items": 20,
-    "ProcessTime": 80
-  },
-  "Customer16": {
-    "UniqueIdentifier": "L7",
-    "Items": 22,
-    "ProcessTime": 88
-  },
-  "Customer1": {
-    "UniqueIdentifier": "A9",
-    "Items": 26,
-    "ProcessTime": 104
-  },
-  "Customer3": {
-    "UniqueIdentifier": "I6",
-    "Items": 27,
-    "ProcessTime": 108
-  },
-  "Customer6": {
-    "UniqueIdentifier": "I2",
-    "Items": 28,
-    "ProcessTime": 112
-  },
-  "Customer11": {
-    "UniqueIdentifier": "H4",
-    "Items": 28,
-    "ProcessTime": 112
-  },
-  "Customer4": {
-    "UniqueIdentifier": "H2",
-    "Items": 29,
-    "ProcessTime": 116
+  "Customer 5": {
+    "CustomerID": "C5",
+    "Basket Size": 19,
+    "Lottery Ticket": false,
+    "Time at Cashier": 114,
+    "Time at Self-Service": 76
   }
 }
