@@ -52,7 +52,7 @@ class Lane(Checkout):
     def ProcessItems(self):
         Customers_In_Cashier = self.ExtractCustomerData()
         for keys in Customers_In_Cashier:
-            delays = (Customers_In_Cashier[keys]["Process Time"])
+            delays = (Customers_In_Cashier[keys]["Process Time"]) #Calculated using the formula given.
             time.sleep(delays)
             print(f"Customer {Customers_In_Cashier[keys]["CustomerID"]} time has been completed.")
 

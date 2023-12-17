@@ -20,7 +20,7 @@ class Checkout:
                 "LaneOpen": self.LaneStatus,
                 "CustomersInLane": TestVal
             }
-            self.Lane["1"] = self.NewLane
+            self.Lane["Cashier Lane 1"] = self.NewLane
             self.WriteLaneDict()
 
 
@@ -54,26 +54,26 @@ class Checkout:
         return self.ordered_dict_items
 
 
-    def CreateSelfCheckoutFile(self):
-        result = self.SortIntoSelfCheckout()[1]
-        with open ("StoringData/SelfCheckout.json", "w") as f:
-            f.write(json.dumps(result,indent=2))
-
-    def CreateCashierCheckoutFile(self):
-        result = self.SortIntoSelfCheckout()[0]
-        with open ("StoringData/Cashier.json", "w") as f:
-            f.write(json.dumps(result,indent=2))
-
     def DisplayLaneStatus(self):
         #This will output the lane status.
         pass
 
-
+    def getTime(self):
+        Timestamp = datetime.now()
+        hour = Timestamp.hour
+        minute = Timestamp.minute
+        CurrentTime = f"{hour}:{minute}"
+        return CurrentTime
 
 #Create new OrderedCustomers.json file
 Checkout1 = Checkout()
-Checkout1.ExtractCustomerData()
-Checkout1.SortCustomer()
+# Checkout1.ExtractCustomerData()
+# Checkout1.SortCustomer()
+
+Checkout1.CreateCashierLane()
+Checkout1.CreateSelfCheckoutLane()
+
+
 
 
 

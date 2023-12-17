@@ -1,0 +1,410 @@
+{
+    "C1": {
+        "Basket Size": 17,
+        "Lottery Ticket": true,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    },
+    "C2": {
+        "Basket Size": 17,
+        "Lottery Ticket": false,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    },
+    "C3": {
+        "Basket Size": 14,
+        "Lottery Ticket": false,
+        "Time at Cashier": 84,
+        "Time at Self-Service": 56
+    },
+    "C4": {
+        "Basket Size": 27,
+        "Lottery Ticket": true,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C5": {
+        "Basket Size": 19,
+        "Lottery Ticket": true,
+        "Time at Cashier": 114,
+        "Time at Self-Service": 76
+    },
+    "C6": {
+        "Basket Size": 27,
+        "Lottery Ticket": true,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C7": {
+        "Basket Size": 19,
+        "Lottery Ticket": true,
+        "Time at Cashier": 114,
+        "Time at Self-Service": 76
+    },
+    "C8": {
+        "Basket Size": 9,
+        "Lottery Ticket": false,
+        "Time at Cashier": 54,
+        "Time at Self-Service": 36
+    },
+    "C9": {
+        "Basket Size": 21,
+        "Lottery Ticket": true,
+        "Time at Cashier": 126,
+        "Time at Self-Service": 84
+    },
+    "C10": {
+        "Basket Size": 7,
+        "Lottery Ticket": false,
+        "Time at Cashier": 42,
+        "Time at Self-Service": 28
+    },
+    "C11": {
+        "Basket Size": 2,
+        "Lottery Ticket": false,
+        "Time at Cashier": 12,
+        "Time at Self-Service": 8
+    },
+    "C12": {
+        "Basket Size": 8,
+        "Lottery Ticket": false,
+        "Time at Cashier": 48,
+        "Time at Self-Service": 32
+    },
+    "C13": {
+        "Basket Size": 25,
+        "Lottery Ticket": false,
+        "Time at Cashier": 150,
+        "Time at Self-Service": 100
+    },
+    "C14": {
+        "Basket Size": 3,
+        "Lottery Ticket": false,
+        "Time at Cashier": 18,
+        "Time at Self-Service": 12
+    },
+    "C15": {
+        "Basket Size": 19,
+        "Lottery Ticket": true,
+        "Time at Cashier": 114,
+        "Time at Self-Service": 76
+    },
+    "C16": {
+        "Basket Size": 6,
+        "Lottery Ticket": false,
+        "Time at Cashier": 36,
+        "Time at Self-Service": 24
+    },
+    "C17": {
+        "Basket Size": 27,
+        "Lottery Ticket": false,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C18": {
+        "Basket Size": 3,
+        "Lottery Ticket": false,
+        "Time at Cashier": 18,
+        "Time at Self-Service": 12
+    },
+    "C19": {
+        "Basket Size": 27,
+        "Lottery Ticket": true,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C20": {
+        "Basket Size": 7,
+        "Lottery Ticket": false,
+        "Time at Cashier": 42,
+        "Time at Self-Service": 28
+    },
+    "C21": {
+        "Basket Size": 17,
+        "Lottery Ticket": false,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    },
+    "C22": {
+        "Basket Size": 1,
+        "Lottery Ticket": false,
+        "Time at Cashier": 6,
+        "Time at Self-Service": 4
+    },
+    "C23": {
+        "Basket Size": 20,
+        "Lottery Ticket": false,
+        "Time at Cashier": 120,
+        "Time at Self-Service": 80
+    },
+    "C24": {
+        "Basket Size": 14,
+        "Lottery Ticket": true,
+        "Time at Cashier": 84,
+        "Time at Self-Service": 56
+    },
+    "C25": {
+        "Basket Size": 25,
+        "Lottery Ticket": false,
+        "Time at Cashier": 150,
+        "Time at Self-Service": 100
+    },
+    "C26": {
+        "Basket Size": 26,
+        "Lottery Ticket": false,
+        "Time at Cashier": 156,
+        "Time at Self-Service": 104
+    },
+    "C27": {
+        "Basket Size": 25,
+        "Lottery Ticket": true,
+        "Time at Cashier": 150,
+        "Time at Self-Service": 100
+    },
+    "C28": {
+        "Basket Size": 21,
+        "Lottery Ticket": true,
+        "Time at Cashier": 126,
+        "Time at Self-Service": 84
+    },
+    "C29": {
+        "Basket Size": 15,
+        "Lottery Ticket": false,
+        "Time at Cashier": 90,
+        "Time at Self-Service": 60
+    },
+    "C30": {
+        "Basket Size": 20,
+        "Lottery Ticket": false,
+        "Time at Cashier": 120,
+        "Time at Self-Service": 80
+    },
+    "C31": {
+        "Basket Size": 15,
+        "Lottery Ticket": true,
+        "Time at Cashier": 90,
+        "Time at Self-Service": 60
+    },
+    "C32": {
+        "Basket Size": 13,
+        "Lottery Ticket": false,
+        "Time at Cashier": 78,
+        "Time at Self-Service": 52
+    },
+    "C33": {
+        "Basket Size": 26,
+        "Lottery Ticket": true,
+        "Time at Cashier": 156,
+        "Time at Self-Service": 104
+    },
+    "C34": {
+        "Basket Size": 28,
+        "Lottery Ticket": false,
+        "Time at Cashier": 168,
+        "Time at Self-Service": 112
+    },
+    "C35": {
+        "Basket Size": 27,
+        "Lottery Ticket": false,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C36": {
+        "Basket Size": 30,
+        "Lottery Ticket": true,
+        "Time at Cashier": 180,
+        "Time at Self-Service": 120
+    },
+    "C37": {
+        "Basket Size": 22,
+        "Lottery Ticket": false,
+        "Time at Cashier": 132,
+        "Time at Self-Service": 88
+    },
+    "C38": {
+        "Basket Size": 18,
+        "Lottery Ticket": true,
+        "Time at Cashier": 108,
+        "Time at Self-Service": 72
+    },
+    "C39": {
+        "Basket Size": 22,
+        "Lottery Ticket": true,
+        "Time at Cashier": 132,
+        "Time at Self-Service": 88
+    },
+    "C40": {
+        "Basket Size": 17,
+        "Lottery Ticket": true,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    },
+    "C41": {
+        "Basket Size": 8,
+        "Lottery Ticket": false,
+        "Time at Cashier": 48,
+        "Time at Self-Service": 32
+    },
+    "C42": {
+        "Basket Size": 15,
+        "Lottery Ticket": true,
+        "Time at Cashier": 90,
+        "Time at Self-Service": 60
+    },
+    "C43": {
+        "Basket Size": 19,
+        "Lottery Ticket": false,
+        "Time at Cashier": 114,
+        "Time at Self-Service": 76
+    },
+    "C44": {
+        "Basket Size": 5,
+        "Lottery Ticket": false,
+        "Time at Cashier": 30,
+        "Time at Self-Service": 20
+    },
+    "C45": {
+        "Basket Size": 20,
+        "Lottery Ticket": true,
+        "Time at Cashier": 120,
+        "Time at Self-Service": 80
+    },
+    "C46": {
+        "Basket Size": 8,
+        "Lottery Ticket": false,
+        "Time at Cashier": 48,
+        "Time at Self-Service": 32
+    },
+    "C47": {
+        "Basket Size": 21,
+        "Lottery Ticket": false,
+        "Time at Cashier": 126,
+        "Time at Self-Service": 84
+    },
+    "C48": {
+        "Basket Size": 17,
+        "Lottery Ticket": true,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    },
+    "C49": {
+        "Basket Size": 11,
+        "Lottery Ticket": false,
+        "Time at Cashier": 66,
+        "Time at Self-Service": 44
+    },
+    "C50": {
+        "Basket Size": 10,
+        "Lottery Ticket": false,
+        "Time at Cashier": 60,
+        "Time at Self-Service": 40
+    },
+    "C51": {
+        "Basket Size": 8,
+        "Lottery Ticket": false,
+        "Time at Cashier": 48,
+        "Time at Self-Service": 32
+    },
+    "C52": {
+        "Basket Size": 15,
+        "Lottery Ticket": true,
+        "Time at Cashier": 90,
+        "Time at Self-Service": 60
+    },
+    "C53": {
+        "Basket Size": 27,
+        "Lottery Ticket": false,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C54": {
+        "Basket Size": 7,
+        "Lottery Ticket": false,
+        "Time at Cashier": 42,
+        "Time at Self-Service": 28
+    },
+    "C55": {
+        "Basket Size": 15,
+        "Lottery Ticket": true,
+        "Time at Cashier": 90,
+        "Time at Self-Service": 60
+    },
+    "C56": {
+        "Basket Size": 30,
+        "Lottery Ticket": false,
+        "Time at Cashier": 180,
+        "Time at Self-Service": 120
+    },
+    "C57": {
+        "Basket Size": 27,
+        "Lottery Ticket": false,
+        "Time at Cashier": 162,
+        "Time at Self-Service": 108
+    },
+    "C58": {
+        "Basket Size": 5,
+        "Lottery Ticket": false,
+        "Time at Cashier": 30,
+        "Time at Self-Service": 20
+    },
+    "C59": {
+        "Basket Size": 29,
+        "Lottery Ticket": true,
+        "Time at Cashier": 174,
+        "Time at Self-Service": 116
+    },
+    "C60": {
+        "Basket Size": 23,
+        "Lottery Ticket": true,
+        "Time at Cashier": 138,
+        "Time at Self-Service": 92
+    },
+    "C61": {
+        "Basket Size": 13,
+        "Lottery Ticket": false,
+        "Time at Cashier": 78,
+        "Time at Self-Service": 52
+    },
+    "C62": {
+        "Basket Size": 11,
+        "Lottery Ticket": false,
+        "Time at Cashier": 66,
+        "Time at Self-Service": 44
+    },
+    "C63": {
+        "Basket Size": 16,
+        "Lottery Ticket": false,
+        "Time at Cashier": 96,
+        "Time at Self-Service": 64
+    },
+    "C64": {
+        "Basket Size": 4,
+        "Lottery Ticket": false,
+        "Time at Cashier": 24,
+        "Time at Self-Service": 16
+    },
+    "C65": {
+        "Basket Size": 21,
+        "Lottery Ticket": true,
+        "Time at Cashier": 126,
+        "Time at Self-Service": 84
+    },
+    "C66": {
+        "Basket Size": 8,
+        "Lottery Ticket": false,
+        "Time at Cashier": 48,
+        "Time at Self-Service": 32
+    },
+    "C67": {
+        "Basket Size": 26,
+        "Lottery Ticket": true,
+        "Time at Cashier": 156,
+        "Time at Self-Service": 104
+    },
+    "C68": {
+        "Basket Size": 17,
+        "Lottery Ticket": false,
+        "Time at Cashier": 102,
+        "Time at Self-Service": 68
+    }
+}

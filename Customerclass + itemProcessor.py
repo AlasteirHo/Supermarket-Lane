@@ -46,8 +46,8 @@ class Customer:
 class ItemProcessing:
     @staticmethod
     def calculate_processing_time(basket_size):
-        time_cashier = basket_size * 6
-        time_self_checkout = basket_size * 4
+        time_cashier = basket_size * 4
+        time_self_checkout = basket_size * 6
         return time_cashier, time_self_checkout
 
     @staticmethod
