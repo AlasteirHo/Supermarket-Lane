@@ -1,4 +1,4 @@
-from CheckoutClass import Checkout
+from Lane import Lanes
 import json
 import random
 import time
@@ -8,7 +8,7 @@ import time
 # self.LaneMax = 25
 # for self-service theres 1 lane of 8 tills = 7 people can be queuing at one time if all 8 tills are open and has customers
 #  made -> Lane1 -> Is Lane1 Full? -> Open new lane ELSE Put customer in Lane1 -> Process Customer -> Output lane status? -> Remove Customer from lane
-class Lane(Checkout):
+class CashierLane(Lanes):
     def __init__(self):
         self.CashierCheckoutCustomers = {}
         self.laneNumber = 1
@@ -72,9 +72,3 @@ class Lane(Checkout):
     def CloseLane(self):
         # Will close the lane if LaneStatus returns Close.
         pass
-
-
-b = Lane()
-b.SortIntoSelfCheckout()
-b.CreateSelfCheckoutFile()
-b.ProcessItems()

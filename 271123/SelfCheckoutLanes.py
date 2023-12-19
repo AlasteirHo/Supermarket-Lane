@@ -1,4 +1,4 @@
-from CheckoutClass import Checkout
+from Lane import Checkout
 
 class SelfCheckout(Checkout):
     def __init__(self):
