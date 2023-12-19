@@ -1,0 +1,34 @@
+{
+  "SelfCheckoutTill 1": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 2": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 3": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 4": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 5": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 6": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 7": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  },
+  "SelfCheckoutTill 8": {
+    "LaneOpen": "Open",
+    "CustomersInSelfCheckoutLane": 0
+  }
+}
