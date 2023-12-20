@@ -58,6 +58,7 @@ class Lanes:
 
         return TotalCustomers
 
+    #Will conduct the basic checks on the current lanes.
     def CashierLaneFull(self, LaneNumber=None):
         self.TotalCustomer = 0
         data = self.ExtractCashierLanes()
@@ -75,6 +76,10 @@ class Lanes:
                 print("Not full")
                 return False
 
+    #To do today:
+    #Create a function that puts the customers from the Cashier.json into CashierLane.json
+    #Create a function that will remove the customer once the process is done in CashierLanes.py
+    #Create a function that will output the status of the lanes.
 
     def ExtractCustomerData(self):
         with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file
