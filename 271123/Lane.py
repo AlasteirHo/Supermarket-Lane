@@ -67,6 +67,8 @@ class Lanes:
         if len(data) == 5:  # This will check if the maximum number of lanes has been met.
             if Total == 25:
                 return True #Change this to whatever the spec wants.
+            else:
+                return False
 
         if LaneNumber is not None:  # Will check if the lane specified is full or not.
             if data[LaneNumber]["CustomersInLane"] == 5:
@@ -77,7 +79,6 @@ class Lanes:
                 return False
 
     #To do today:
-    #Create a function that puts the customers from the Cashier.json into CashierLane.json
     #Create a function that will remove the customer once the process is done in CashierLanes.py
     #Create a function that will output the status of the lanes.
 

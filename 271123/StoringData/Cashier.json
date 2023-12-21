@@ -3,24 +3,28 @@
     "CustomerID": "C2",
     "Items In Basket": 14,
     "Lane Type": "Cashier",
-    "Process Time": 84
+    "Process Time": 84,
+    "Cashier Lane Number": 1
   },
   "Customer 4": {
     "CustomerID": "C4",
     "Items In Basket": 14,
     "Lane Type": "Cashier",
-    "Process Time": 84
+    "Process Time": 84,
+    "Cashier Lane Number": 1
   },
   "Customer 7": {
     "CustomerID": "C7",
     "Items In Basket": 15,
     "Lane Type": "Cashier",
-    "Process Time": 90
+    "Process Time": 90,
+    "Cashier Lane Number": 3
   },
   "Customer 5": {
     "CustomerID": "C5",
     "Items In Basket": 19,
     "Lane Type": "Cashier",
-    "Process Time": 114
+    "Process Time": 114,
+    "Cashier Lane Number": 1
   }
 }

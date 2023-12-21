@@ -2,6 +2,16 @@
   "LaneNumber 1": {
     "TimeStamp": "22:6",
     "LaneOpen": "Open",
+    "CustomersInLane": 3
+  },
+  "LaneNumber 2": {
+    "TimeStamp": "22:6",
+    "LaneOpen": "Open",
+    "CustomersInLane": 3
+  },
+  "LaneNumber 3": {
+    "TimeStamp": "22:6",
+    "LaneOpen": "Open",
     "CustomersInLane": 2
   }
 }
