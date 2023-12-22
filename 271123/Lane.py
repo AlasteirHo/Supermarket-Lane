@@ -44,7 +44,8 @@ class Lanes:
 ########################################################################################################################
 
     # Extracts the cashier lanes.
-    def ExtractCashierLanes(self):
+    @staticmethod
+    def ExtractCashierLanes():
         with open("StoringData/CashierLane.json", "r") as f:
             data = json.load(f)
         return data
@@ -70,7 +71,7 @@ class Lanes:
             else:
                 return False
 
-        if LaneNumber is not None:  # Will check if the lane specified is full or not.
+        if LaneNumber is not None: # Will check if the lane specified is full or not.
             if data[LaneNumber]["CustomersInLane"] == 5:
                 print("Full")
                 return True
@@ -116,5 +117,5 @@ Checkout1 = Lanes()
 
 # Checkout1.CreateCashierLane(1)
 # # Checkout1.CreateSelfCheckoutLane()
-Checkout1.CashierLaneFull("LaneNumber 1")
+# Checkout1.CashierLaneFull("LaneNumber 1")
 # Checkout1.CashierCustomerTotal()
