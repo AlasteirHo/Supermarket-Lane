@@ -57,9 +57,21 @@ class CashierLanes(Lanes):
     def UpdateCashierFile(self,data):
         current_content = self.ExtractCashierLanes()
         current_content.update(data)
-
+        print(current_content)
         with open("StoringData/CashierLane.json", "w") as f:
             f.write(json.dumps(current_content, indent=2))
+
+
+    def UpdateAndDeleteCustomerFile(self,customerID):
+        current_content = self.ExtractCustomerData()
+
+        if customerID in current_content:
+            del current_content[customerID]
+            print(f'The key {customerID} has been deleted.')
+            with open("StoringData/Cashier.json", "w") as f:
+                f.write(json.dumps(current_content, indent=2))
+        else:
+            print("Customer cannot be found.")
 
 
     @staticmethod
@@ -98,12 +110,42 @@ class CashierLanes(Lanes):
             else:
                 print("No need to open new lane.")
 
+
+    def CloseNewLane(self):
+        data = self.ExtractCashierLanes()
+        EmptyLanes = []
+
+        for LaneNumber, Customers in data.items():
+            if Customers["CustomersInLane"] == 0:
+                EmptyLanes.append(LaneNumber)
+
+        for lanes in EmptyLanes:
+            del data[lanes]
+
+        self.WriteCashierLaneFile(data)
+
     def ProcessItems(self):
         Customers_In_Cashier = self.ExtractCustomerData()
         for keys in Customers_In_Cashier:
-            delays = (Customers_In_Cashier[keys]["Process Time"]) #Calculated using the formula given.
-            time.sleep(delays)
-            print(f"Customer {Customers_In_Cashier[keys]["CustomerID"]} time has been completed.")
+            UpdatedCustomersDict = self.ExtractCustomerData()
+            Delays = (UpdatedCustomersDict[keys]["Process Time"]) #Calculated using the formula given.
+            CustomerLaneNumber = (UpdatedCustomersDict[keys]["Cashier Lane Number"])
+            time.sleep(2)
+            self.DecreaseLaneNumber(CustomerLaneNumber)
+            self.UpdateAndDeleteCustomerFile(keys)
+
+    def DecreaseLaneNumber(self, Number):
+        data = self.ExtractCashierLanes()
+        laneNumber = f"LaneNumber {Number}"
+        CustomersInLane = data[laneNumber]["CustomersInLane"]
+        try:
+            data[laneNumber].update({
+                "CustomersInLane": CustomersInLane - 1
+            })
+            self.WriteCashierLaneFile(data)
+
+        except KeyError:
+            print("Lane Number was not found")
 
     def AddLaneNumberToCustomer(self, CustomerID, LaneNumber):
         Customers = self.ExtractCustomerData()
@@ -134,6 +176,7 @@ class CashierLanes(Lanes):
 
         for customer, lane in Customers.items():
             if "Cashier Lane Number" not in lane:
+                self.CloseNewLane() #Need to make this better with IF statements
                 self.OpenNewLane()
                 best_lane = self.FindBestLane()
                 self.AddLaneNumberToCustomer(customer, best_lane)
@@ -141,8 +184,10 @@ class CashierLanes(Lanes):
 
 
 C1 = CashierLanes()
-# C1.AddCustomerToLane()
+C1.AddCustomerToLane()
 # C1.AddLaneNumberToCustomer("Customer 2", 3)
 # C1.FindBestLane()
-C1.AddCustomerToLane()
+# C1.AddCustomerToLane()
+# C1.ProcessItems()
 # C1.IncrementCashierLane()
+# C1.CloseNewLane()
