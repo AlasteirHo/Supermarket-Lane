@@ -1,7 +1,6 @@
 import json
 import random
 import time
-from datetime import timedelta, datetime
 
 
 class Customer:
@@ -40,15 +39,15 @@ class Customer:
                 "Time at Self-Service": customer.processing_time_self_checkout
             }
 
-        with open("customer_data.json", "w") as json_file:
+        with open("271123/StoringData/customer_data.json", "w") as json_file:
             json.dump(customer_data, json_file, indent=4)
 
 
 class ItemProcessing:
     @staticmethod
     def calculate_processing_time(basket_size):
-        time_cashier = basket_size * 6
-        time_self_checkout = basket_size * 4
+        time_cashier = basket_size * 4
+        time_self_checkout = basket_size * 6
         return time_cashier, time_self_checkout
 
     @staticmethod
@@ -92,17 +91,9 @@ for customer in initial_customers:
 
 # Loop to generate customers and add them to the customer_dict every 2 seconds
 def main_loop():
-    simulation_interval = 5  # 5 minutes in simulation is 5 seconds in real life
-    supermarket_open = datetime.strptime('07:00:00', '%H:%M:%S')
-    supermarket_close = datetime.strptime('23:00:00', '%H:%M:%S')
-    current_time = supermarket_open
-
-    while current_time <= supermarket_close:
-        # Print the current time in HH:MM:SS format
-        print(current_time.strftime('%H:%M:%S'))
-
-        # Generate and process customers
+    while True:
         customer = Customer.create_customer()
+
         processing_time_cashier, processing_time_self_checkout = ItemProcessing.calculate_processing_time(
             customer.basket_size)
 
@@ -114,11 +105,8 @@ def main_loop():
 
         Customer.save_customer_dict_to_json()
 
-        # Move time forward in the simulation
-        current_time += timedelta(minutes=5)
+        time.sleep(2)
 
-        # Simulate real-time passage (sleep for 5 seconds)
-        time.sleep(simulation_interval)
 
 if __name__ == "__main__":
     main_loop()
