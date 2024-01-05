@@ -1,0 +1,26 @@
+{
+  "Customer 6": {
+    "CustomerID": "C6",
+    "Items In Basket": 11,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 66
+  },
+  "Customer 1": {
+    "CustomerID": "C1",
+    "Items In Basket": 12,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 72
+  },
+  "Customer 8": {
+    "CustomerID": "C8",
+    "Items In Basket": 15,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 90
+  },
+  "Customer 5": {
+    "CustomerID": "C5",
+    "Items In Basket": 21,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 126
+  }
+}
