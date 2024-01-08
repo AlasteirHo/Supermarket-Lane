@@ -1,5 +1,6 @@
 from Lane import Lanes
 import json
+import time
 
 class SelfCheckout(Lanes):
     def __init__(self):
@@ -55,22 +56,52 @@ class SelfCheckout(Lanes):
             if customers["CustomersInSelfCheckoutLane"] == 0:
                 return lanes
 
-    def UpdateSelfCheckoutLanes(self,lane_number):
+    def RemoveCustomerFromSelfCheckout(self, customerID):
+        Customers = self.ExtractCustomerData()
+
+        if customerID in Customers:
+            del Customers[customerID]
+            print(f"The key {customerID} has been deleted")
+            with open("StoringData/SelfCheckoutData/SelfCheckout.json", "w") as f:
+                f.write(json.dumps(Customers, indent=2))
+        else:
+            print("Customer was not found")
+
+    def OpenSelfCheckoutLanes(self,lane_number):
         data = self.ExtractLaneData()
         CustomersInLane = data[lane_number]["CustomersInSelfCheckoutLane"]
         print(CustomersInLane)
         try:
-            data[lane_number]["CustomersInSelfCheckoutLane"] = CustomersInLane + 1
+            data[lane_number]["CustomersInSelfCheckoutLane"] = 1
             data[lane_number]["LaneOpen"] = "Open"
             self.WriteSelfCheckoutLanes(data)
         except KeyError:
             print("Lane was not found.")
 
-    def CloseSelfCheckoutLanes(self):
+    def DecreaseSelfCheckoutLanes(self, lane_number):
         data = self.ExtractLaneData()
-        for lanes, keys in data.items():
-            if data[lanes]["LaneOpen"] == "Open" and data[lanes]["CustomersInSelfCheckoutLane"] == 0:
-                print(lanes)
+        SelfCheckoutLane = f"SelfCheckoutTill {lane_number}"
+        CustomersInLane = data[SelfCheckoutLane]["CustomersInSelfCheckoutLane"]
+        # print(CustomersInLane)
+        try:
+            data[SelfCheckoutLane]["CustomersInSelfCheckoutLane"] = 0
+            data[SelfCheckoutLane]["LaneOpen"] = "Closed"
+            self.WriteSelfCheckoutLanes(data)
+        except KeyError:
+            print("Lane was not found.")
+
+
+    def ProcessItems(self):
+        CustomersInSelfCheckoutLane = self.ExtractCustomerData()
+        for keys in CustomersInSelfCheckoutLane:
+            UpdatedCustomerDict = self.ExtractCustomerData()
+            Delays = (UpdatedCustomerDict[keys]["Process Time"])
+            CustomerLaneNumber = (UpdatedCustomerDict[keys]["SelfCheckoutLane Number"])
+            print(CustomerLaneNumber)
+            time.sleep(2)
+            self.DecreaseSelfCheckoutLanes(CustomerLaneNumber)
+            self.RemoveCustomerFromSelfCheckout(keys)
+
 
     def AddSelfCheckoutLaneToCustomer(self, CustomerID, LaneNumber):
         Customers = self.ExtractCustomerData()
@@ -88,11 +119,14 @@ class SelfCheckout(Lanes):
         for customer, lane in Customers.items():
             lane = self.FindBestLane()
             self.AddSelfCheckoutLaneToCustomer(customer, lane)
-            self.UpdateSelfCheckoutLanes(lane)
+            self.OpenSelfCheckoutLanes(lane)
+
+        self.ProcessItems()
 
 
 
 T = SelfCheckout()
-# T.main()
-T.CloseSelfCheckoutLanes()
+T.main()
+# T.DecreaseSelfCheckoutLanes("SelfCheckoutTill 1")
 # T.CreateSelfCheckoutFile()
+# T.ProcessItems()
