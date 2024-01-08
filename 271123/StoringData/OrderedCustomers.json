@@ -1,51 +1,58 @@
 {
-  "Customer 1": {
-    "CustomerID": "C1",
-    "Basket Size": 2,
-    "Lottery Ticket": false,
-    "Time at Cashier": 12,
-    "Time at Self-Service": 8
-  },
   "Customer 3": {
     "CustomerID": "C3",
+    "Basket Size": 4,
+    "Lottery Ticket": false,
+    "Time at Cashier": 24,
+    "Time at Self-Service": 16
+  },
+  "Customer 4": {
+    "CustomerID": "C4",
+    "Basket Size": 4,
+    "Lottery Ticket": false,
+    "Time at Cashier": 24,
+    "Time at Self-Service": 16
+  },
+  "Customer 2": {
+    "CustomerID": "C2",
     "Basket Size": 5,
     "Lottery Ticket": false,
     "Time at Cashier": 30,
     "Time at Self-Service": 20
   },
-  "Customer 6": {
-    "CustomerID": "C6",
+  "Customer 7": {
+    "CustomerID": "C7",
     "Basket Size": 7,
     "Lottery Ticket": false,
     "Time at Cashier": 42,
     "Time at Self-Service": 28
   },
-  "Customer 2": {
-    "CustomerID": "C2",
-    "Basket Size": 14,
-    "Lottery Ticket": true,
-    "Time at Cashier": 84,
-    "Time at Self-Service": 56
+  "Customer 6": {
+    "CustomerID": "C6",
+    "Basket Size": 11,
+    "Lottery Ticket": false,
+    "Time at Cashier": 66,
+    "Time at Self-Service": 44
   },
-  "Customer 4": {
-    "CustomerID": "C4",
-    "Basket Size": 14,
-    "Lottery Ticket": true,
-    "Time at Cashier": 84,
-    "Time at Self-Service": 56
+  "Customer 1": {
+    "CustomerID": "C1",
+    "Basket Size": 12,
+    "Lottery Ticket": false,
+    "Time at Cashier": 72,
+    "Time at Self-Service": 48
   },
-  "Customer 7": {
-    "CustomerID": "C7",
+  "Customer 8": {
+    "CustomerID": "C8",
     "Basket Size": 15,
-    "Lottery Ticket": true,
+    "Lottery Ticket": false,
     "Time at Cashier": 90,
     "Time at Self-Service": 60
   },
   "Customer 5": {
     "CustomerID": "C5",
-    "Basket Size": 19,
-    "Lottery Ticket": false,
-    "Time at Cashier": 114,
-    "Time at Self-Service": 76
+    "Basket Size": 21,
+    "Lottery Ticket": true,
+    "Time at Cashier": 126,
+    "Time at Self-Service": 84
   }
 }

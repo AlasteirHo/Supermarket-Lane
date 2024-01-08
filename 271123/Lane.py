@@ -25,7 +25,7 @@ class Lanes:
         self.WriteCashierLane()
 
     def WriteCashierLane(self):
-        with open("StoringData/CashierLane.json", "w") as f:
+        with open("StoringData/CashierData/CashierLane.json", "w") as f:
             f.write(json.dumps(self.CashierLane, indent=2))
 
     def CreateSelfCheckoutLane(self):
@@ -38,7 +38,7 @@ class Lanes:
         self.WriteSelfCheckoutLane()
 
     def WriteSelfCheckoutLane(self):
-        with open("StoringData/SelfCheckout.json", "w") as f:
+        with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
             f.write(json.dumps(self.SelfCheckout, indent=2))
 
 ########################################################################################################################
@@ -46,7 +46,13 @@ class Lanes:
     # Extracts the cashier lanes.
     @staticmethod
     def ExtractCashierLanes():
-        with open("StoringData/CashierLane.json", "r") as f:
+        with open("StoringData/CashierData/CashierLane.json", "r") as f:
+            data = json.load(f)
+        return data
+
+    @staticmethod
+    def extract_ordered_customers():
+        with open("StoringData/OrderedCustomers.json", "r") as f:
             data = json.load(f)
         return data
 
@@ -59,29 +65,6 @@ class Lanes:
 
         return TotalCustomers
 
-    #Will conduct the basic checks on the current lanes.
-    def CashierLaneFull(self, LaneNumber=None):
-        self.TotalCustomer = 0
-        data = self.ExtractCashierLanes()
-        Total = self.CashierCustomerTotal()
-
-        if len(data) == 5:  # This will check if the maximum number of lanes has been met.
-            if Total == 25:
-                return True #Change this to whatever the spec wants.
-            else:
-                return False
-
-        if LaneNumber is not None: # Will check if the lane specified is full or not.
-            if data[LaneNumber]["CustomersInLane"] == 5:
-                print("Full")
-                return True
-            else:
-                print("Not full")
-                return False
-
-    #To do today:
-    #Create a function that will remove the customer once the process is done in CashierLanes.py
-    #Create a function that will output the status of the lanes.
 
     def ExtractCustomerData(self):
         with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file
@@ -98,10 +81,6 @@ class Lanes:
         self.SetCustomerData()
         return self.ordered_dict_items
 
-    def DisplayLaneStatus(self):
-        # This will output the lane status.
-        pass
-
     def getTime(self):
         Timestamp = datetime.now()
         hour = Timestamp.hour
@@ -113,7 +92,7 @@ class Lanes:
 # Create new OrderedCustomers.json file
 Checkout1 = Lanes()
 # Checkout1.ExtractCustomerData()
-# Checkout1.SortCustomer()
+Checkout1.SortCustomer()
 
 # Checkout1.CreateCashierLane(1)
 # # Checkout1.CreateSelfCheckoutLane()
