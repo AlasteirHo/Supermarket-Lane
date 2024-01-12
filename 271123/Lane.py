@@ -41,7 +41,6 @@ class Lanes:
         with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
             f.write(json.dumps(self.SelfCheckout, indent=2))
 
-########################################################################################################################
 
     # Extracts the cashier lanes.
     @staticmethod
@@ -64,7 +63,6 @@ class Lanes:
             TotalCustomers += lane_data["CustomersInLane"]
 
         return TotalCustomers
-
 
     def ExtractCustomerData(self):
         with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file

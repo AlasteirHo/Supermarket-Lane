@@ -114,6 +114,15 @@ class SelfCheckout(Lanes):
         except KeyError:
             print("Customer ID not found.")
 
+    def DisplayLaneStatus(self):
+        lanes = self.ExtractLaneData()
+        total_customers = 0
+        for lane_name, lane_details in lanes.items():
+            if lane_details['LaneOpen'] == 'Open':
+                total_customers += lane_details['CustomersInSelfCheckoutLane']
+
+        return total_customers
+
     def main(self):
         Customers = self.ExtractCustomerData()
         for customer, lane in Customers.items():
@@ -126,7 +135,8 @@ class SelfCheckout(Lanes):
 
 
 T = SelfCheckout()
-T.main()
+# T.main()
+T.DisplayLaneStatus()
 # T.DecreaseSelfCheckoutLanes("SelfCheckoutTill 1")
 # T.CreateSelfCheckoutFile()
 # T.ProcessItems()

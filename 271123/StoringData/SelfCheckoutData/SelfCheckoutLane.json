@@ -1,6 +1,6 @@
 {
   "SelfCheckoutTill 1": {
-    "LaneOpen": "Closed",
+    "LaneOpen": "Open",
     "CustomersInSelfCheckoutLane": 0
   },
   "SelfCheckoutTill 2": {

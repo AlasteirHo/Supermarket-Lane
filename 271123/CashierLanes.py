@@ -185,5 +185,5 @@ class CashierLanes(Lanes):
 C1 = CashierLanes()
 # C1.AddCustomerToLane() #This will add customers and increment the lanes.
 #Functions that need to be used for later:
-# C1.DisplayLaneStatus()
+C1.DisplayLaneStatus()
 # C1.ProcessItems()
