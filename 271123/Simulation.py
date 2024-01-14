@@ -2,6 +2,9 @@ import random
 import time
 from datetime import datetime, timedelta
 from CustomerItemProcessor import Customer, ItemProcessing
+from SelfCheckoutLanes import SelfCheckout
+from Lane import Lanes
+from CashierLanes import CashierLanes
 
 
 class Simulation(Customer):

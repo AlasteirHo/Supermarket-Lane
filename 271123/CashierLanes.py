@@ -8,7 +8,6 @@ class CashierLanes(Lanes):
         self.CashierCheckoutCustomers = {}
         self.laneNumber = 1
         self.ServiceLane = 1
-        self.Queue = []
         super().__init__()
 
 
@@ -72,7 +71,6 @@ class CashierLanes(Lanes):
 
         if customerID in current_content:
             del current_content[customerID]
-            # print(f'The key {customerID} has been deleted.')
             with open("StoringData/CashierData/Cashier.json", "w") as f:
                 f.write(json.dumps(current_content, indent=2))
         else:
