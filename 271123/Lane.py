@@ -55,14 +55,31 @@ class Lanes:
             data = json.load(f)
         return data
 
+    def ExtractSelfCheckOutData(self): #Extracts the current customers in the Cashier.json file.
+        with open("StoringData/CashierData/Cashier.json", "r") as f:
+            CustomersInCashier = json.load(f)
+        return CustomersInCashier
+
     #Will add up all the customers across all lanes.
     def CashierCustomerTotal(self):
         TotalCustomers = 0
         data = self.ExtractCashierLanes()
         for lane_number, lane_data in data.items():
             TotalCustomers += lane_data["CustomersInLane"]
+        if TotalCustomers == 25:
+            return "Lane Saturation"
+        else:
+            return TotalCustomers
 
-        return TotalCustomers
+    def SelfCheckoutCustomerTotal(self):
+        TotalCustomers = 0
+        data = self.ExtractSelfCheckOutData()
+        for lane_number, lane_data in data.items():
+            TotalCustomers += lane_data["CustomersInSelfCheckoutLane"]
+        if TotalCustomers == 15:
+            return "Lane Saturation"
+        else:
+            return TotalCustomers
 
     def ExtractCustomerData(self):
         with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file

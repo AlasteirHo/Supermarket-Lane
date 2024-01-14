@@ -6,7 +6,7 @@ class SelfCheckout(Lanes):
     def __init__(self):
         super().__init__()
         self.SelfCheckoutCustomers = {}
-        self.MaxCustomer = 1
+
 
 
     def SortIntoSelfCheckoutLanes(self):
@@ -81,8 +81,6 @@ class SelfCheckout(Lanes):
     def DecreaseSelfCheckoutLanes(self, lane_number):
         data = self.ExtractLaneData()
         SelfCheckoutLane = f"SelfCheckoutTill {lane_number}"
-        CustomersInLane = data[SelfCheckoutLane]["CustomersInSelfCheckoutLane"]
-        # print(CustomersInLane)
         try:
             data[SelfCheckoutLane]["CustomersInSelfCheckoutLane"] = 0
             data[SelfCheckoutLane]["LaneOpen"] = "Closed"
@@ -98,7 +96,7 @@ class SelfCheckout(Lanes):
             Delays = (UpdatedCustomerDict[keys]["Process Time"])
             CustomerLaneNumber = (UpdatedCustomerDict[keys]["SelfCheckoutLane Number"])
             print(CustomerLaneNumber)
-            time.sleep(2)
+            time.sleep(Delays)
             self.DecreaseSelfCheckoutLanes(CustomerLaneNumber)
             self.RemoveCustomerFromSelfCheckout(keys)
 
@@ -132,7 +130,7 @@ class SelfCheckout(Lanes):
 
         self.ProcessItems()
 
-
+#Remember to include if all the lanes are full to return lane saturation
 
 T = SelfCheckout()
 # T.main()
