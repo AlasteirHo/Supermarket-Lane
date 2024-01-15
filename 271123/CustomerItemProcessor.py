@@ -43,7 +43,6 @@ class Customer(ItemProcessing):
     def __init__(self):
         super().__init__()
         self.customer_id: str = f"C{Customer.current_customer_id}"
-        self.customer_num: str = f"Customer {Customer.current_customer_id}"
         Customer.current_customer_id += 1
         self.basket_size = self.basket_size_randomizer()
         self.processing_time_cashier, self.processing_time_self_checkout = self.calculate_processing_time(self.basket_size)
@@ -64,9 +63,8 @@ class Customer(ItemProcessing):
     def save_customer_dict_to_json():
         customer_data = {}
         for customer_id, customer in Customer.Customer_Dict.items():
-            customer_data[customer.customer_num] = {
+            customer_data[customer.customer_id] = {
                 "customer_id": customer.customer_id,
-                "customer_num": customer.customer_num,
                 "basket_size": customer.basket_size,
                 "lottery_ticket": customer.lottery_ticket,
                 "time_at_cashier": customer.processing_time_cashier,
@@ -81,7 +79,6 @@ class Customer(ItemProcessing):
         for customer_id, customer in Customer.Customer_Dict.items():
             print(
                 f"CustomerID: {customer.customer_id}, "
-                f"Customer_num: {customer.customer_num}, "
                 f"Basket_Size: {customer.basket_size}, "
                 f"Lottery_Ticket: {customer.lottery_ticket}, "
                 f"Time at Cashier: {customer.processing_time_cashier}, "
