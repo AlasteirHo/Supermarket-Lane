@@ -2,9 +2,9 @@
   "Customer 1": {
     "CustomerID": "C1",
     "Customer_num": "Customer 1",
-    "Basket Size": 1,
+    "Basket Size": 26,
     "Lottery Ticket": false,
-    "Time at Cashier": 76,
-    "Time at Self-Service": 114
+    "Time at Cashier": 4,
+    "Time at Self-Service": 6
   }
 }

@@ -1,115 +1,101 @@
 import json
-import time
+# import time
 from datetime import datetime
 import random
 
-
-# MAX Cashier Lane = 5
+MAX_CASHIER_LANE = 5
+MAX_SELF_CHECKOUT_LANE = 8
 
 class Lanes:
     def __init__(self):
-        self.TotalCustomer = 0
-        self.LaneStatus = "Open"
-        self.CashierLane = {}
-        self.SelfCheckout = {}
+        self.total_customer = 0
+        self.lane_status = "Open"
+        self.cashier_lane = {}
+        self.self_checkout = {}
         self.ordered_dict_items = {}
 
-    # Functions that deal with the creation of lanes:
-    def CreateCashierLane(self, LaneNumber):
-        self.NewLane = {
-            "TimeStamp": self.getTime(),
-            "LaneOpen": self.LaneStatus,
-            "CustomersInLane": 0,
-        }
-        self.CashierLane[f"LaneNumber {LaneNumber}"] = self.NewLane
-        self.WriteCashierLane()
+    def create_lane(self, lane_type, lane_number=None):
+        if lane_type == "cashier":
+            lane_dict = {
+                f"LaneNumber {lane_number}": {
+                    "time_stamp": self.get_time(),
+                    "lane_open": self.lane_status,
+                    "customers_in_lane": 0,
+                }
+            }
+            self.cashier_lane.update(lane_dict)
+        elif lane_type == "self_checkout":
+            lane_dict = {
+                f"SelfCheckoutTill {lane_number}": {
+                    "lane_open": "Open",
+                    "customers_in_self_checkout_lane": 0,
+                } for lane_number in range(1, MAX_SELF_CHECKOUT_LANE + 1)
+            }
+            self.self_checkout.update(lane_dict)
 
-    def WriteCashierLane(self):
-        with open("StoringData/CashierData/CashierLane.json", "w") as f:
-            f.write(json.dumps(self.CashierLane, indent=2))
+    def write_lane(self, lane_type):
+        if lane_type == "cashier":
+            with open("StoringData/CashierData/CashierLane.json", "w") as f:
+                json.dump(self.cashier_lane, f, indent=2)
+        elif lane_type == "self_checkout":
+            with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
+                json.dump(self.self_checkout, f, indent=2)
 
-    def CreateSelfCheckoutLane(self):
-        self.SelfCheckout.update({
-            f"SelfCheckoutTill {i}": {
-                "LaneOpen": "Open",
-                "CustomersInSelfCheckoutLane": 0,
-            } for i in range(1, 9)
-        })
-        self.WriteSelfCheckoutLane()
-
-    def WriteSelfCheckoutLane(self):
-        with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
-            f.write(json.dumps(self.SelfCheckout, indent=2))
-
-
-    # Extracts the cashier lanes.
-    @staticmethod
-    def ExtractCashierLanes():
-        with open("StoringData/CashierData/CashierLane.json", "r") as f:
-            data = json.load(f)
+    def extract_lanes(self, lane_type):
+        if lane_type == "cashier":
+            with open("StoringData/CashierData/CashierLane.json", "r") as f:
+                data = json.load(f)
+        elif lane_type == "self_checkout":
+            with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "r") as f:
+                data = json.load(f)
         return data
 
-    @staticmethod
-    def extract_ordered_customers():
+    def extract_ordered_customers(self):
         with open("StoringData/OrderedCustomers.json", "r") as f:
             data = json.load(f)
         return data
 
-    def ExtractSelfCheckOutData(self): #Extracts the current customers in the Cashier.json file.
-        with open("StoringData/CashierData/Cashier.json", "r") as f:
-            CustomersInCashier = json.load(f)
-        return CustomersInCashier
-
-    #Will add up all the customers across all lanes.
-    def CashierCustomerTotal(self):
-        TotalCustomers = 0
-        data = self.ExtractCashierLanes()
-        for lane_number, lane_data in data.items():
-            TotalCustomers += lane_data["CustomersInLane"]
-        if TotalCustomers == 25:
-            return "Lane Saturation"
-        else:
-            return TotalCustomers
-
-    def SelfCheckoutCustomerTotal(self):
-        TotalCustomers = 0
-        data = self.ExtractSelfCheckOutData()
-        for lane_number, lane_data in data.items():
-            TotalCustomers += lane_data["CustomersInSelfCheckoutLane"]
-        if TotalCustomers == 15:
-            return "Lane Saturation"
-        else:
-            return TotalCustomers
-
-    def ExtractCustomerData(self):
+    def extract_customer_data(self):
         with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file
             data = json.load(f)
         return data
 
-    def SetCustomerData(self):
+    def set_customer_data(self):
         with open("StoringData/OrderedCustomers.json", "w") as f:
-            f.write(json.dumps(self.ordered_dict_items, indent=2))
+            json.dump(self.ordered_dict_items, f, indent=2)
 
-    def SortCustomer(self):
-        customer_data = self.ExtractCustomerData()
-        self.ordered_dict_items = dict(sorted(customer_data.items(), key=lambda item: item[1]['Basket Size']))
-        self.SetCustomerData()
+    def sort_customer(self):
+        customer_data = self.extract_customer_data()
+        self.ordered_dict_items = dict(sorted(customer_data.items(), key=lambda item: item[1]['basket_size']))
+        self.set_customer_data()
         return self.ordered_dict_items
 
-    def getTime(self):
-        Timestamp = datetime.now()
-        hour = Timestamp.hour
-        minute = Timestamp.minute
-        CurrentTime = f"{hour}:{minute}"
-        return CurrentTime
+    def get_time(self):
+        timestamp = datetime.now()
+        hour = timestamp.hour
+        minute = timestamp.minute
+        current_time = f"{hour}:{minute}"
+        return current_time
 
+    def cashier_customer_total(self):
+        total_customers = 0
+        data = self.extract_lanes("cashier")
+        for lane_number, lane_data in data.items():
+            total_customers += lane_data["customers_in_lane"]
+        if total_customers == MAX_CASHIER_LANE * 5:
+            return "Lane Saturation"
+        else:
+            return total_customers
 
-# Create new OrderedCustomers.json file
+    def self_checkout_customer_total(self):
+        total_customers = 0
+        data = self.extract_lanes("self_checkout")
+        for lane_number, lane_data in data.items():
+            total_customers += lane_data["customers_in_self_checkout_lane"]
+        if total_customers == MAX_SELF_CHECKOUT_LANE:
+            return "Lane Saturation"
+        else:
+            return total_customers
+
 Checkout1 = Lanes()
-# Checkout1.ExtractCustomerData()
-Checkout1.SortCustomer()
-
-# Checkout1.CreateCashierLane(1)
-# # Checkout1.CreateSelfCheckoutLane()
-# Checkout1.CashierLaneFull("LaneNumber 1")
-# Checkout1.CashierCustomerTotal()
+Checkout1.extract_customer_data()
