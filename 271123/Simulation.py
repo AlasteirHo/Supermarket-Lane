@@ -14,7 +14,7 @@ class Simulation(Customer):
         self.simulation_time = None
         self.opening_time = datetime.strptime('07:00:00', '%H:%M:%S')
         self.closing_time = datetime.strptime('23:00:00', '%H:%M:%S')
-
+        self.simulation_interval = 5
     @staticmethod
     def initialize_customers():
         initial_customers = []
@@ -35,11 +35,10 @@ class Simulation(Customer):
         self.initialize_customers()
         self.simulation_time += timedelta(seconds=30)
 
+        time.sleep(self.simulation_interval)
     def main_loop(self):
-        simulation_interval = 5
-        end_simulation = False
 
-        while self.simulation_time.time() < self.closing_time.time() and not end_simulation:
+        while self.simulation_time.time() < self.closing_time.time():
             simulation_time = self.simulation_time
             print(f"Current Time: {simulation_time.strftime('%H:%M:%S')}")
 
@@ -61,7 +60,7 @@ class Simulation(Customer):
             self.simulation_time += timedelta(seconds=30)
 
             # Simulate real-time passage (sleep for 30 seconds)
-            time.sleep(simulation_interval)
+            time.sleep(self.simulation_interval)
 
 
 if __name__ == "__main__":
