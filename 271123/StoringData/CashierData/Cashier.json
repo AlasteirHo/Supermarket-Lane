@@ -1,28 +1,86 @@
 {
-  "Customer 2": {
-    "CustomerID": "C2",
-    "Items In Basket": 14,
-    "Lane Type": "Cashier",
-    "Process Time": 10,
-    "Cashier Lane Number": 1
+  "Customer 15": {
+    "customer_id": "C15",
+    "basket_size": 15,
+    "lane_type": "Cashier",
+    "process_time": 60
   },
-  "Customer 4": {
-    "CustomerID": "C4",
-    "Items In Basket": 14,
-    "Lane Type": "Cashier",
-    "Process Time": 2,
-    "Cashier Lane Number": 1
+  "Customer 30": {
+    "customer_id": "C30",
+    "basket_size": 16,
+    "lane_type": "Cashier",
+    "process_time": 64
   },
-  "Customer 7": {
-    "CustomerID": "C7",
-    "Items In Basket": 15,
-    "Lane Type": "Cashier",
-    "Process Time": 9
+  "Customer 32": {
+    "customer_id": "C32",
+    "basket_size": 16,
+    "lane_type": "Cashier",
+    "process_time": 64
   },
-  "Customer 5": {
-    "CustomerID": "C5",
-    "Items In Basket": 19,
-    "Lane Type": "Cashier",
-    "Process Time": 8
+  "Customer 16": {
+    "customer_id": "C16",
+    "basket_size": 19,
+    "lane_type": "Cashier",
+    "process_time": 76
+  },
+  "Customer 31": {
+    "customer_id": "C31",
+    "basket_size": 20,
+    "lane_type": "Cashier",
+    "process_time": 80
+  },
+  "Customer 29": {
+    "customer_id": "C29",
+    "basket_size": 21,
+    "lane_type": "Cashier",
+    "process_time": 84
+  },
+  "Customer 11": {
+    "customer_id": "C11",
+    "basket_size": 22,
+    "lane_type": "Cashier",
+    "process_time": 88
+  },
+  "Customer 28": {
+    "customer_id": "C28",
+    "basket_size": 24,
+    "lane_type": "Cashier",
+    "process_time": 96
+  },
+  "Customer 10": {
+    "customer_id": "C10",
+    "basket_size": 28,
+    "lane_type": "Cashier",
+    "process_time": 112
+  },
+  "Customer 25": {
+    "customer_id": "C25",
+    "basket_size": 29,
+    "lane_type": "Cashier",
+    "process_time": 116
+  },
+  "Customer 22": {
+    "customer_id": "C22",
+    "basket_size": 30,
+    "lane_type": "Cashier",
+    "process_time": 120
+  },
+  "Customer 23": {
+    "customer_id": "C23",
+    "basket_size": 30,
+    "lane_type": "Cashier",
+    "process_time": 120
+  },
+  "Customer 26": {
+    "customer_id": "C26",
+    "basket_size": 30,
+    "lane_type": "Cashier",
+    "process_time": 120
+  },
+  "Customer 27": {
+    "customer_id": "C27",
+    "basket_size": 30,
+    "lane_type": "Cashier",
+    "process_time": 120
   }
 }

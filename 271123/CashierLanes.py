@@ -35,22 +35,22 @@ class CashierLanes(Lanes):
         ordered_data = self.extract_ordered_customers()
 
         for keys in ordered_data:
-            if ordered_data[keys]["Basket Size"] >= 10:  # Checks if their basket size is over or equal to 10.
+            if ordered_data[keys]["basket_size"] >= 10:  # Checks if their basket size is over or equal to 10.
                 self.CashierCheckoutCustomers.update({  # If so, we update the Customer carrying over their values and updating their lane type.
                     keys: {
-                        "CustomerID": ordered_data[keys]["CustomerID"],
-                        "Items In Basket": ordered_data[keys]["Basket Size"],
-                        "Lane Type": "Cashier",
-                        "Process Time": ordered_data[keys]["Time at Cashier"]
+                        "customer_id": ordered_data[keys]["customer_id"],
+                        "basket_size": ordered_data[keys]["basket_size"],
+                        "lane_type": "Cashier",
+                        "process_time": ordered_data[keys]["time_at_cashier"]
                     }
                 })
         return self.CashierCheckoutCustomers
 
     def add_new_cashier_lanes(self, new_lane_number):  # Used to create a new lane and assign its values.
         new_lane_details = {
-            "TimeStamp": self.get_time(),
-            "LaneOpen": self.lane_status,
-            "CustomersInLane": 0,
+            "time_stamp": self.get_time(),
+            "lane_open": self.lane_status,
+            "customers_in_lane": 0,
         }
         new_lane = f"LaneNumber {new_lane_number}"
         self.cashier_lane[new_lane] = new_lane_details
@@ -66,34 +66,35 @@ class CashierLanes(Lanes):
         else:
             print("Customer cannot be found.")
 
+
     def increment_cashier_lane(self, lane_number):  # Used to increment the customerinlane value by 1.
-        data = self.extract_lanes("cashier")
-        customers_in_lane = data[lane_number]["CustomersInLane"]
+        customers = self.extract_lanes("cashier")
+        customers_in_lane = customers[lane_number]["customers_in_lane"]
         try:
-            data[lane_number].update({
-                "CustomersInLane": customers_in_lane + 1
+            customers[lane_number].update({
+                "customers_in_lane": customers_in_lane + 1
             })
-            self.write_cashier_lane_file(data)
+            self.write_cashier_lane_file(customers)
 
         except KeyError:
-            print("Lane Number was not found")
+            print(f"Lane Number {lane_number} was not found")
 
     def open_new_lane(self):
         data = self.extract_lanes("cashier")
 
         for lane_number, customers in data.items():
-            if customers["CustomersInLane"] == 5:
+            if customers["customers_in_lane"] == 5:
                 new_lane_number = int(lane_number.split(" ")[1]) + 1
                 self.add_new_cashier_lanes(new_lane_number)
             else:
-                print("No need to open a new lane.")
+                pass
 
     def close_new_lane(self):
         data = self.extract_lanes("cashier")
         empty_lanes = []
 
         for lane_number, customers in data.items():
-            if customers["CustomersInLane"] == 0:
+            if customers["customers_in_lane"] == 0:
                 empty_lanes.append(lane_number)
 
         if len(empty_lanes) != 0:
@@ -106,26 +107,26 @@ class CashierLanes(Lanes):
         customers_in_cashier = self.extract_customer_data("cashier")
         for keys in customers_in_cashier:
             updated_customers_dict = self.extract_customer_data("cashier")
-            delays = (updated_customers_dict[keys]["Process Time"])  # Calculated using the formula given.
-            customer_lane_number = (updated_customers_dict[keys]["Cashier Lane Number"])
-            time.sleep(delays)
+            delays = (updated_customers_dict[keys]["process_time"])  # Calculated using the formula given.
+            customer_lane_number = (updated_customers_dict[keys]["cashier_lane_number"])
+            time.sleep(2)
             self.decrease_lane_number(customer_lane_number)
             self.update_and_delete_customer_file(keys)
 
     def display_lane_status(self):
         lanes = self.extract_lanes("cashier")
         for lane_name, lane_details in lanes.items():
-            if lane_details['LaneOpen'] == 'Open' and lane_details["CustomersInLane"] != 0:
-                print(f"{lane_name} (Cashier): {'*' * lane_details['CustomersInLane']}")
+            if lane_details['LaneOpen'] == 'Open' and lane_details["customers_in_lane"] != 0:
+                print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
         pass
 
     def decrease_lane_number(self, number):
         data = self.extract_lanes("cashier")
         lane_number = f"LaneNumber {number}"
-        customers_in_lane = data[lane_number]["CustomersInLane"]
+        customers_in_lane = data[lane_number]["customers_in_lane"]
         try:
             data[lane_number].update({
-                "CustomersInLane": customers_in_lane - 1
+                "customers_in_lane": customers_in_lane - 1
             })
             self.write_cashier_lane_file(data)
 
@@ -136,8 +137,9 @@ class CashierLanes(Lanes):
         customers = self.extract_customer_data("cashier")
         try:
             lane_number = int(lane_number.split()[-1])
+            print(lane_number)
             customers[customer_id].update({
-                "Cashier Lane Number": lane_number
+                "cashier_lane_number": lane_number
             })
             self.write_cashier_file(customers)
         except KeyError:
@@ -149,26 +151,34 @@ class CashierLanes(Lanes):
         least_customers = float("inf")
 
         for lane_number, customers in data.items():
-            if customers["CustomersInLane"] < least_customers:
-                least_customers = customers["CustomersInLane"]
+            if customers["customers_in_lane"] < least_customers:
+                least_customers = customers["customers_in_lane"]
                 best_lane = lane_number
 
         return best_lane
 
     def add_customer_to_lane(self):
         customers = self.extract_customer_data("cashier")
-
+        iteration = 0
         for customer, lane in customers.items():
-            self.close_new_lane()
-            if "Cashier Lane Number" not in lane:
+            if "cashier_lane_number" not in lane:
+                if iteration != 0:
+                    self.close_new_lane()
                 self.open_new_lane()
                 best_lane = self.find_best_lane()
-                self.add_lane_number_to_customer(customer, best_lane)
                 self.increment_cashier_lane(best_lane)
+                self.add_lane_number_to_customer(customer, best_lane)
+                iteration += 1
+                # self.process_items()
+
+
+
 
 
 C1 = CashierLanes()
-C1.add_customer_to_lane()  # This will add customers and increment the lanes.
+C1.add_customer_to_lane()
+# This will add customers and increment the lanes.
 # Functions that need to be used for later:
-C1.display_lane_status()
+# C1.display_lane_status()
+# C1.create_cashier_file()
 #

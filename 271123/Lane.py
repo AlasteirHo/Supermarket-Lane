@@ -14,7 +14,7 @@ class Lanes:
         self.self_checkout = {}
         self.ordered_dict_items = {}
 
-    def create_lane(self, lane_type, lane_number=None):
+    def create_lane(self, lane_type, lane_number=1):
         if lane_type == "cashier":
             lane_dict = {
                 f"LaneNumber {lane_number}": {
@@ -61,7 +61,7 @@ class Lanes:
 
     @staticmethod
     def extract_customers():
-        with open("customer_data.json", "r") as f:
+        with open("StoringData/customer_data.json", "r") as f:
             data = json.load(f)
         return data
 
@@ -113,6 +113,8 @@ class Lanes:
         else:
             return total_customers
 
+
 Checkout1 = Lanes()
-# Checkout1.create_lane("self_checkout")
+# Checkout1.sort_customer()
+# Checkout1.create_lane("cashier")
 # Checkout1.extract_customer_data()

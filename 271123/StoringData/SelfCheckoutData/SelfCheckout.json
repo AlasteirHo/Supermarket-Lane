@@ -1,1 +1,16 @@
-{}
+{
+  "Customer 2": {
+    "CustomerID": "C2",
+    "Items In Basket": 5,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 30,
+    "SelfCheckoutLane Number": 3
+  },
+  "Customer 7": {
+    "CustomerID": "C7",
+    "Items In Basket": 7,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 42,
+    "SelfCheckoutLane Number": 4
+  }
+}
