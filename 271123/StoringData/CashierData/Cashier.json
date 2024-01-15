@@ -17,14 +17,12 @@
     "CustomerID": "C7",
     "Items In Basket": 15,
     "Lane Type": "Cashier",
-    "Process Time": 9,
-    "Cashier Lane Number": 1
+    "Process Time": 9
   },
   "Customer 5": {
     "CustomerID": "C5",
     "Items In Basket": 19,
     "Lane Type": "Cashier",
-    "Process Time": 8,
-    "Cashier Lane Number": 2
+    "Process Time": 8
   }
 }

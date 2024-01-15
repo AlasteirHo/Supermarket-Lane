@@ -24,24 +24,27 @@ class Lanes:
                 }
             }
             self.cashier_lane.update(lane_dict)
+            self.write_lane("cashier",self.cashier_lane)
         elif lane_type == "self_checkout":
             lane_dict = {
                 f"SelfCheckoutTill {lane_number}": {
-                    "lane_open": "Open",
+                    "lane_open": "Closed",
                     "customers_in_self_checkout_lane": 0,
                 } for lane_number in range(1, MAX_SELF_CHECKOUT_LANE + 1)
             }
             self.self_checkout.update(lane_dict)
+            self.write_lane("self_checkout",self.self_checkout)
 
-    def write_lane(self, lane_type):
+    def write_lane(self, lane_type,data):
         if lane_type == "cashier":
             with open("StoringData/CashierData/CashierLane.json", "w") as f:
-                json.dump(self.cashier_lane, f, indent=2)
+                json.dump(data, f, indent=2)
         elif lane_type == "self_checkout":
             with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
                 json.dump(self.self_checkout, f, indent=2)
 
-    def extract_lanes(self, lane_type):
+    @staticmethod
+    def extract_lanes(lane_type):
         if lane_type == "cashier":
             with open("StoringData/CashierData/CashierLane.json", "r") as f:
                 data = json.load(f)
@@ -50,14 +53,26 @@ class Lanes:
                 data = json.load(f)
         return data
 
-    def extract_ordered_customers(self):
+    @staticmethod
+    def extract_ordered_customers():
         with open("StoringData/OrderedCustomers.json", "r") as f:
             data = json.load(f)
         return data
 
-    def extract_customer_data(self):
-        with open("StoringData/customer_data.json", "r") as f:  # Change this to the new file
+    @staticmethod
+    def extract_customers():
+        with open("customer_data.json", "r") as f:
             data = json.load(f)
+        return data
+
+    @staticmethod
+    def extract_customer_data(customer_type):
+        if customer_type == "cashier":
+            with open("StoringData/CashierData/Cashier.json", "r") as f:  # Change this to the new file
+                data = json.load(f)
+        elif customer_type == "self_checkout":
+            with open("StoringData/SelfCheckoutData/SelfCheckout.json", "r") as f:  # Change this to the new file
+                data = json.load(f)
         return data
 
     def set_customer_data(self):
@@ -65,12 +80,13 @@ class Lanes:
             json.dump(self.ordered_dict_items, f, indent=2)
 
     def sort_customer(self):
-        customer_data = self.extract_customer_data()
+        customer_data = self.extract_customers()
         self.ordered_dict_items = dict(sorted(customer_data.items(), key=lambda item: item[1]['basket_size']))
         self.set_customer_data()
         return self.ordered_dict_items
 
-    def get_time(self):
+    @staticmethod
+    def get_time():
         timestamp = datetime.now()
         hour = timestamp.hour
         minute = timestamp.minute
@@ -98,4 +114,5 @@ class Lanes:
             return total_customers
 
 Checkout1 = Lanes()
-Checkout1.extract_customer_data()
+# Checkout1.create_lane("self_checkout")
+# Checkout1.extract_customer_data()

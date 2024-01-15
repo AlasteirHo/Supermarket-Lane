@@ -7,8 +7,6 @@ class SelfCheckout(Lanes):
         super().__init__()
         self.SelfCheckoutCustomers = {}
 
-
-
     def SortIntoSelfCheckoutLanes(self):
         ordered_data = self.extract_ordered_customers()
 
@@ -30,7 +28,8 @@ class SelfCheckout(Lanes):
             f.write(json.dumps(result, indent=2))
 
 
-    def ExtractCustomerData(self):
+    @staticmethod
+    def ExtractCustomerData():
         with open("StoringData/SelfCheckoutData/SelfCheckout.json", "r") as f:
             CustomersInSelfCheckout = json.load(f)
         return CustomersInSelfCheckout
@@ -53,7 +52,7 @@ class SelfCheckout(Lanes):
     def FindBestLane(self):
         data = self.ExtractLaneData()
         for lanes, customers in data.items():
-            if customers["CustomersInSelfCheckoutLane"] == 0:
+            if customers["customers_in_self_checkout_lane"] == 0:
                 return lanes
 
     def RemoveCustomerFromSelfCheckout(self, customerID):
@@ -69,11 +68,9 @@ class SelfCheckout(Lanes):
 
     def OpenSelfCheckoutLanes(self,lane_number):
         data = self.ExtractLaneData()
-        CustomersInLane = data[lane_number]["CustomersInSelfCheckoutLane"]
-        print(CustomersInLane)
         try:
-            data[lane_number]["CustomersInSelfCheckoutLane"] = 1
-            data[lane_number]["LaneOpen"] = "Open"
+            data[lane_number]["customers_in_self_checkout_lane"] = 1
+            data[lane_number]["lane_open"] = "Open"
             self.WriteSelfCheckoutLanes(data)
         except KeyError:
             print("Lane was not found.")
@@ -82,8 +79,8 @@ class SelfCheckout(Lanes):
         data = self.ExtractLaneData()
         SelfCheckoutLane = f"SelfCheckoutTill {lane_number}"
         try:
-            data[SelfCheckoutLane]["CustomersInSelfCheckoutLane"] = 0
-            data[SelfCheckoutLane]["LaneOpen"] = "Closed"
+            data[SelfCheckoutLane]["customers_in_self_checkout_lane"] = 0
+            data[SelfCheckoutLane]["lane_open"] = "Closed"
             self.WriteSelfCheckoutLanes(data)
         except KeyError:
             print("Lane was not found.")
@@ -96,7 +93,7 @@ class SelfCheckout(Lanes):
             Delays = (UpdatedCustomerDict[keys]["Process Time"])
             CustomerLaneNumber = (UpdatedCustomerDict[keys]["SelfCheckoutLane Number"])
             print(CustomerLaneNumber)
-            time.sleep(Delays)
+            time.sleep(5)
             self.DecreaseSelfCheckoutLanes(CustomerLaneNumber)
             self.RemoveCustomerFromSelfCheckout(keys)
 
@@ -133,8 +130,9 @@ class SelfCheckout(Lanes):
 #Remember to include if all the lanes are full to return lane saturation
 
 T = SelfCheckout()
-# T.main()
-T.DisplayLaneStatus()
+# T.CreateSelfCheckoutFile()
+T.main()
+# T.DisplayLaneStatus()
 # T.DecreaseSelfCheckoutLanes("SelfCheckoutTill 1")
 # T.CreateSelfCheckoutFile()
 # T.ProcessItems()

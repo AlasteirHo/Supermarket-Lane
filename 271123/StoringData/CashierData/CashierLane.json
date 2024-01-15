@@ -1,7 +1,7 @@
 {
   "LaneNumber 1": {
-    "TimeStamp": "22:36",
-    "LaneOpen": "Open",
-    "CustomersInLane": 0
+    "time_stamp": "10:50",
+    "lane_open": "Open",
+    "customers_in_lane": 0
   }
 }
