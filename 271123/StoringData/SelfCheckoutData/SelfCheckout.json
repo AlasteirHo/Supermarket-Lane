@@ -4,13 +4,34 @@
     "Items In Basket": 5,
     "Lane Type": "SelfCheckout",
     "Process Time": 30,
-    "SelfCheckoutLane Number": 3
+    "self_checkout_lane_number": 1
   },
-  "Customer 7": {
-    "CustomerID": "C7",
-    "Items In Basket": 7,
+  "Customer 8": {
+    "CustomerID": "C8",
+    "Items In Basket": 5,
     "Lane Type": "SelfCheckout",
     "Process Time": 42,
-    "SelfCheckoutLane Number": 4
+    "self_checkout_lane_number": 2
+  },
+  "Customer 9": {
+    "CustomerID": "C9",
+    "Items In Basket": 4,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 42,
+    "self_checkout_lane_number": 3
+  },
+  "Customer 10": {
+    "CustomerID": "C10",
+    "Items In Basket": 2,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 42,
+    "self_checkout_lane_number": 4
+  },
+  "Customer 11": {
+    "CustomerID": "C11",
+    "Items In Basket": 6,
+    "Lane Type": "SelfCheckout",
+    "Process Time": 42,
+    "self_checkout_lane_number": 5
   }
 }

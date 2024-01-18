@@ -70,6 +70,7 @@ class Lanes:
         if customer_type == "cashier":
             with open("StoringData/CashierData/Cashier.json", "r") as f:  # Change this to the new file
                 data = json.load(f)
+
         elif customer_type == "self_checkout":
             with open("StoringData/SelfCheckoutData/SelfCheckout.json", "r") as f:  # Change this to the new file
                 data = json.load(f)
@@ -113,8 +114,24 @@ class Lanes:
         else:
             return total_customers
 
+    def display_lane_status(self):
+        cashier_lanes_data = self.extract_lanes("cashier")
+        self_checkout_lanes_data = self.extract_lanes("self_checkout")
+
+        for lane_name, lane_details in cashier_lanes_data.items():
+            if lane_details['lane_open'] == 'Open' and lane_details["customers_in_lane"] != 0:
+                print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
+
+        for lane_name, lane_details in self_checkout_lanes_data.items():
+            if lane_details['lane_open'] == 'Open' and lane_details["customers_in_self_checkout_lane"] == 1:
+                print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_self_checkout_lane']}")
+
+
+
+
 
 Checkout1 = Lanes()
 # Checkout1.sort_customer()
+Checkout1.display_lane_status()
 # Checkout1.create_lane("cashier")
 # Checkout1.extract_customer_data()

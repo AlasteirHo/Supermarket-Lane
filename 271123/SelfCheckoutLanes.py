@@ -5,134 +5,131 @@ import time
 class SelfCheckout(Lanes):
     def __init__(self):
         super().__init__()
-        self.SelfCheckoutCustomers = {}
+        self.self_checkout_customers = {}
 
-    def SortIntoSelfCheckoutLanes(self):
+    def sort_into_self_checkout_lanes(self):
         ordered_data = self.extract_ordered_customers()
 
         for keys in ordered_data:
-            if ordered_data[keys]["Basket Size"] < 10:
-                self.SelfCheckoutCustomers.update({
+            if ordered_data[keys]["basket_size"] < 10:
+                self.self_checkout_customers.update({
                     keys: {
-                        "CustomerID": ordered_data[keys]["CustomerID"],
-                        "Items In Basket": ordered_data[keys]["Basket Size"],
-                        "Lane Type": "SelfCheckout",
-                        "Process Time": ordered_data[keys]["Time at Cashier"]
+                        "customer_id": ordered_data[keys]["customer_id"],
+                        "items_in_basket": ordered_data[keys]["basket_size"],
+                        "lane_type": "SelfCheckout",
+                        "process_time": ordered_data[keys]["time_at_self_service"]
                     }
                 })
-        return self.SelfCheckoutCustomers
+        return self.self_checkout_customers
 
-    def CreateSelfCheckoutFile(self):
-        result = self.SortIntoSelfCheckoutLanes()
+    def create_self_checkout_file(self):
+        result = self.sort_into_self_checkout_lanes()
         with open("StoringData/SelfCheckoutData/SelfCheckout.json", "w") as f:
             f.write(json.dumps(result, indent=2))
 
-
     @staticmethod
-    def ExtractCustomerData():
+    def extract_customer_data():
         with open("StoringData/SelfCheckoutData/SelfCheckout.json", "r") as f:
-            CustomersInSelfCheckout = json.load(f)
-        return CustomersInSelfCheckout
+            customers_in_self_checkout = json.load(f)
+        return customers_in_self_checkout
 
     @staticmethod
-    def ExtractLaneData():
+    def extract_lane_data():
         with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "r") as f:
-            SelfCheckoutLaneData = json.load(f)
-        return SelfCheckoutLaneData
+            self_checkout_lane_data = json.load(f)
+        return self_checkout_lane_data
+
     @staticmethod
-    def WriteSelfCheckoutLanes(data):
+    def write_self_checkout_lanes(data):
         with open("StoringData/SelfCheckoutData/SelfCheckoutLane.json", "w") as f:
             f.write(json.dumps(data, indent=2))
 
     @staticmethod
-    def WriteSelfCheckoutCustomer(data):
+    def write_self_checkout_customer(data):
         with open("StoringData/SelfCheckoutData/SelfCheckout.json", "w") as f:
             f.write(json.dumps(data, indent=2))
 
-    def FindBestLane(self):
-        data = self.ExtractLaneData()
+    def find_best_lane(self):
+        data = self.extract_lane_data()
         for lanes, customers in data.items():
             if customers["customers_in_self_checkout_lane"] == 0:
                 return lanes
 
-    def RemoveCustomerFromSelfCheckout(self, customerID):
-        Customers = self.ExtractCustomerData()
+    def remove_customer_from_self_checkout(self, customer_id):
+        customers = self.extract_customer_data()
 
-        if customerID in Customers:
-            del Customers[customerID]
-            print(f"The key {customerID} has been deleted")
+        if customer_id in customers:
+            del customers[customer_id]
+            print(f"The key {customer_id} has been deleted")
             with open("StoringData/SelfCheckoutData/SelfCheckout.json", "w") as f:
-                f.write(json.dumps(Customers, indent=2))
+                f.write(json.dumps(customers, indent=2))
         else:
             print("Customer was not found")
 
-    def OpenSelfCheckoutLanes(self,lane_number):
-        data = self.ExtractLaneData()
+    def open_self_checkout_lanes(self, lane_number):
+        data = self.extract_lane_data()
         try:
             data[lane_number]["customers_in_self_checkout_lane"] = 1
             data[lane_number]["lane_open"] = "Open"
-            self.WriteSelfCheckoutLanes(data)
+            self.write_self_checkout_lanes(data)
         except KeyError:
             print("Lane was not found.")
 
-    def DecreaseSelfCheckoutLanes(self, lane_number):
-        data = self.ExtractLaneData()
-        SelfCheckoutLane = f"SelfCheckoutTill {lane_number}"
+    def decrease_self_checkout_lanes(self, lane_number):
+        data = self.extract_lane_data()
+        self_checkout_lane = f"SelfCheckoutTill {lane_number}"
         try:
-            data[SelfCheckoutLane]["customers_in_self_checkout_lane"] = 0
-            data[SelfCheckoutLane]["lane_open"] = "Closed"
-            self.WriteSelfCheckoutLanes(data)
+            data[self_checkout_lane]["customers_in_self_checkout_lane"] = 0
+            data[self_checkout_lane]["lane_open"] = "Closed"
+            self.write_self_checkout_lanes(data)
         except KeyError:
             print("Lane was not found.")
 
-
-    def ProcessItems(self):
-        CustomersInSelfCheckoutLane = self.ExtractCustomerData()
-        for keys in CustomersInSelfCheckoutLane:
-            UpdatedCustomerDict = self.ExtractCustomerData()
-            Delays = (UpdatedCustomerDict[keys]["Process Time"])
-            CustomerLaneNumber = (UpdatedCustomerDict[keys]["SelfCheckoutLane Number"])
-            print(CustomerLaneNumber)
+    def process_items(self):
+        customers_in_self_checkout_lane = self.extract_customer_data()
+        for keys in customers_in_self_checkout_lane:
+            updated_customer_dict = self.extract_customer_data()
+            delays = updated_customer_dict[keys]["process_time"]
+            customer_lane_number = updated_customer_dict[keys]["self_checkout_lane_number"]
             time.sleep(5)
-            self.DecreaseSelfCheckoutLanes(CustomerLaneNumber)
-            self.RemoveCustomerFromSelfCheckout(keys)
+            self.decrease_self_checkout_lanes(customer_lane_number)
+            self.remove_customer_from_self_checkout(keys)
 
-
-    def AddSelfCheckoutLaneToCustomer(self, CustomerID, LaneNumber):
-        Customers = self.ExtractCustomerData()
+    def add_self_checkout_lane_to_customer(self, customer_id, lane_number):
+        customers = self.extract_customer_data()
         try:
-            LaneNumber = int(LaneNumber.split()[-1])
-            Customers[CustomerID].update({
-                "SelfCheckoutLane Number": LaneNumber
+            lane_number = int(lane_number.split()[-1])
+            customers[customer_id].update({
+                "self_checkout_lane_number":lane_number
             })
-            self.WriteSelfCheckoutCustomer(Customers)
+            self.write_self_checkout_customer(customers)
         except KeyError:
             print("Customer ID not found.")
 
-    def DisplayLaneStatus(self):
-        lanes = self.ExtractLaneData()
+    def display_lane_status(self):
+        lanes = self.extract_lane_data()
         total_customers = 0
         for lane_name, lane_details in lanes.items():
-            if lane_details['LaneOpen'] == 'Open':
-                total_customers += lane_details['CustomersInSelfCheckoutLane']
+            if lane_details['lane_open'] == 'Open':
+                total_customers += lane_details['customers_in_lane']
 
         return total_customers
 
     def main(self):
-        Customers = self.ExtractCustomerData()
-        for customer, lane in Customers.items():
-            lane = self.FindBestLane()
-            self.AddSelfCheckoutLaneToCustomer(customer, lane)
-            self.OpenSelfCheckoutLanes(lane)
+        customers = self.extract_customer_data()
+        for customer, lane in customers.items():
+            lane = self.find_best_lane()
+            self.add_self_checkout_lane_to_customer(customer, lane)
+            self.open_self_checkout_lanes(lane)
 
-        self.ProcessItems()
+        # self.process_items()
 
-#Remember to include if all the lanes are full to return lane saturation
+# Remember to include if all the lanes are full to return lane saturation
 
-T = SelfCheckout()
-# T.CreateSelfCheckoutFile()
-T.main()
-# T.DisplayLaneStatus()
-# T.DecreaseSelfCheckoutLanes("SelfCheckoutTill 1")
-# T.CreateSelfCheckoutFile()
-# T.ProcessItems()
+t = SelfCheckout()
+# t.create_self_checkout_file()
+# t.main()
+# t.display_lane_status()
+# t.decrease_self_checkout_lanes("SelfCheckoutTill 1")
+# t.create_self_checkout_file()
+# t.process_items()

@@ -7,7 +7,7 @@ class CashierLanes(Lanes):
     def __init__(self):
         super().__init__()
         self.CashierCheckoutCustomers = {}
-        self.laneNumber = 1
+        self.laneNumber = None
         self.ServiceLane = 1
 
     @staticmethod
@@ -46,7 +46,7 @@ class CashierLanes(Lanes):
                 })
         return self.CashierCheckoutCustomers
 
-    def add_new_cashier_lanes(self, new_lane_number):  # Used to create a new lane and assign its values.
+    def add_new_cashier_lanes(self, new_lane_number):
         new_lane_details = {
             "time_stamp": self.get_time(),
             "lane_open": self.lane_status,
@@ -66,28 +66,47 @@ class CashierLanes(Lanes):
         else:
             print("Customer cannot be found.")
 
+    @staticmethod
+    def extract_lane_data():
+        with open("StoringData/CashierData/CashierLane.json", "r") as f:
+            data = json.load(f)
+        return data
 
-    def increment_cashier_lane(self, lane_number):  # Used to increment the customerinlane value by 1.
-        customers = self.extract_lanes("cashier")
-        customers_in_lane = customers[lane_number]["customers_in_lane"]
+    def increment_cashier_lane(self, lane_number):
+        lanes = self.extract_lane_data()
+        customers_in_lane = lanes[lane_number]["customers_in_lane"]
+
+        # print(f"Lane Number: {lane_number}")
+        # print(f"Customers in Lane before increment: {customers_in_lane}")
+
         try:
-            customers[lane_number].update({
+            lanes[lane_number].update({
                 "customers_in_lane": customers_in_lane + 1
             })
-            self.write_cashier_lane_file(customers)
-
+            # print("Incrementing customers in lane")
+            self.write_cashier_lane_file(lanes)
         except KeyError:
             print(f"Lane Number {lane_number} was not found")
 
-    def open_new_lane(self):
+    def find_next_available_lane(self):
         data = self.extract_lanes("cashier")
+        for i in range(1, len(data) + 2):  # Find the first available lane number
+            lane_number = f"LaneNumber {i}"
+            if lane_number not in data:
+                return i
 
-        for lane_number, customers in data.items():
-            if customers["customers_in_lane"] == 5:
-                new_lane_number = int(lane_number.split(" ")[1]) + 1
-                self.add_new_cashier_lanes(new_lane_number)
-            else:
-                pass
+    def open_new_lane(self, best_lane):
+        data = self.extract_lane_data()
+        customers_in_lane = data[best_lane]["customers_in_lane"]
+
+        # print(f"Best Lane: {best_lane}")
+        # print(f"Customers in Lane: {customers_in_lane}")
+
+        if customers_in_lane == 5:
+            new_lane_number = int(best_lane.split()[-1]) + 1
+            # print(f"Opening new lane with number: {new_lane_number}")
+            self.add_new_cashier_lanes(new_lane_number)
+
 
     def close_new_lane(self):
         data = self.extract_lanes("cashier")
@@ -113,12 +132,11 @@ class CashierLanes(Lanes):
             self.decrease_lane_number(customer_lane_number)
             self.update_and_delete_customer_file(keys)
 
-    def display_lane_status(self):
+    def display_cashier_status(self):
         lanes = self.extract_lanes("cashier")
         for lane_name, lane_details in lanes.items():
-            if lane_details['LaneOpen'] == 'Open' and lane_details["customers_in_lane"] != 0:
+            if lane_details['lane_open'] == 'Open' and lane_details["customers_in_lane"] != 0:
                 print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
-        pass
 
     def decrease_lane_number(self, number):
         data = self.extract_lanes("cashier")
@@ -133,20 +151,24 @@ class CashierLanes(Lanes):
         except KeyError:
             print("Lane Number was not found")
 
+    def customer_data(self):
+        with open("StoringData/CashierData/Cashier.json", "r") as f:
+            data = json.load(f)
+        return data
+
     def add_lane_number_to_customer(self, customer_id, lane_number):
-        customers = self.extract_customer_data("cashier")
+        customers = self.customer_data()
         try:
             lane_number = int(lane_number.split()[-1])
-            print(lane_number)
             customers[customer_id].update({
                 "cashier_lane_number": lane_number
             })
-            self.write_cashier_file(customers)
+            self.write_cashier_file(customers)  # Corrected function name
         except KeyError:
             print("Customer ID not found.")
 
     def find_best_lane(self):
-        data = self.extract_lanes("cashier")
+        data = self.extract_lane_data()
         best_lane = None
         least_customers = float("inf")
 
@@ -158,27 +180,24 @@ class CashierLanes(Lanes):
         return best_lane
 
     def add_customer_to_lane(self):
-        customers = self.extract_customer_data("cashier")
+        customers = self.customer_data()
         iteration = 0
         for customer, lane in customers.items():
-            if "cashier_lane_number" not in lane:
-                if iteration != 0:
-                    self.close_new_lane()
-                self.open_new_lane()
-                best_lane = self.find_best_lane()
-                self.increment_cashier_lane(best_lane)
-                self.add_lane_number_to_customer(customer, best_lane)
-                iteration += 1
-                # self.process_items()
-
-
-
+            best_lane = self.find_best_lane()
+            self.add_lane_number_to_customer(customer, best_lane)
+            self.open_new_lane(best_lane)
+            self.increment_cashier_lane(best_lane)
+        # self.process_items()
+        # self.close_new_lane()
 
 
 C1 = CashierLanes()
-C1.add_customer_to_lane()
+# C1.add_customer_to_lane()
+# C1.increment_cashier_lane()
+# print(C1.find_best_lane())
+
 # This will add customers and increment the lanes.
+# C1.open_new_lane(C1.find_best_lane())
 # Functions that need to be used for later:
-# C1.display_lane_status()
 # C1.create_cashier_file()
 #
