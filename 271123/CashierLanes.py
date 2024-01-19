@@ -121,13 +121,6 @@ class CashierLanes(Lanes):
             self.decrease_lane_number(customer_lane_number)
             self.update_and_delete_customer_file(keys)
 
-    def display_cashier_status(self):
-        # Display the status of open cashier lanes.
-        lanes = self.extract_lanes("cashier")
-        for lane_name, lane_details in lanes.items():
-            if lane_details['lane_open'] == 'Open' and lane_details["customers_in_lane"] != 0:
-                print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
-
     def decrease_lane_number(self, number):
         # Decrease the customer count in a cashier lane.
         data = self.extract_lanes("cashier")
