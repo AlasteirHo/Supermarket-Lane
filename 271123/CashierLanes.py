@@ -5,9 +5,8 @@ import time
 class CashierLanes(Lanes):
     def __init__(self):
         super().__init__()
-        self.CashierCheckoutCustomers = {}
-        self.laneNumber = None
-        self.ServiceLane = 1
+        self.cashier_checkout_customers = {}
+        self.lane_number = None
 
     @staticmethod
     def write_cashier_file(data):
@@ -40,7 +39,7 @@ class CashierLanes(Lanes):
 
         for keys in ordered_data:
             if ordered_data[keys]["basket_size"] >= 10:
-                self.CashierCheckoutCustomers.update({
+                self.cashier_checkout_customers.update({
                     keys: {
                         "customer_id": ordered_data[keys]["customer_id"],
                         "basket_size": ordered_data[keys]["basket_size"],
@@ -48,7 +47,7 @@ class CashierLanes(Lanes):
                         "process_time": ordered_data[keys]["time_at_cashier"]
                     }
                 })
-        return self.CashierCheckoutCustomers
+        return self.cashier_checkout_customers
 
     def add_new_cashier_lanes(self, new_lane_number):
         # Add a new cashier lane.

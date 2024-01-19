@@ -48,7 +48,7 @@ class SelfCheckout(Lanes):
             if customers["customers_in_self_checkout_lane"] == 0:
                 return lanes
 
-    def remove_customer_from_self_checkout(self, customer_id):
+    def remove_customer_from_checkout(self, customer_id):
         # Remove a customer from the self-checkout data.
         customers = self.extract_customer_data("self_checkout")
 
@@ -90,7 +90,7 @@ class SelfCheckout(Lanes):
             customer_lane_number = updated_customer_dict[keys]["self_checkout_lane_number"]
             time.sleep(5)
             self.decrease_self_checkout_lanes(customer_lane_number)
-            self.remove_customer_from_self_checkout(keys)
+            self.remove_customer_from_checkout(keys)
 
     def add_self_checkout_lane_to_customer(self, customer_id, lane_number):
         # Add self-checkout lane information to the customer data.
