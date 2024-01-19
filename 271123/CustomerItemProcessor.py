@@ -68,7 +68,7 @@ class Customer(ItemProcessing):
                 "basket_size": customer.basket_size,
                 "lottery_ticket": customer.lottery_ticket,
                 "time_at_cashier": customer.processing_time_cashier,
-                "time_at_self-service": customer.processing_time_self_checkout,
+                "time_at_self_service": customer.processing_time_self_checkout,
             }
 
         with open("StoringData/customer_data.json", "w") as json_file:

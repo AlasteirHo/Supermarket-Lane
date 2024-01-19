@@ -2,6 +2,7 @@ import json
 # import time
 from datetime import datetime
 import random
+import tkinter as tk
 
 MAX_CASHIER_LANE = 5
 MAX_SELF_CHECKOUT_LANE = 8
@@ -127,11 +128,22 @@ class Lanes:
                 print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_self_checkout_lane']}")
 
 
-
-
-
 Checkout1 = Lanes()
+gui = tk.Tk()
+
+
+gui.title("Simulation Interface")
+
+
+button1 = tk.Button(gui, text="Display Lane Status", command=Checkout1.display_lane_status)
+button1.pack()
+button2 = tk.Button(gui,text="Exit Simulation", command=exit)
+button2.pack()
+
+tk.mainloop()
+
+# Checkout1 = Lanes()
 # Checkout1.sort_customer()
-Checkout1.display_lane_status()
+# Checkout1.display_lane_status()
 # Checkout1.create_lane("cashier")
 # Checkout1.extract_customer_data()
