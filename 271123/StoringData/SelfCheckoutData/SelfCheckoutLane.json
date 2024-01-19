@@ -1,23 +1,23 @@
 {
   "SelfCheckoutTill 1": {
-    "lane_open": "Open",
-    "customers_in_self_checkout_lane": 1
+    "lane_open": "Closed",
+    "customers_in_self_checkout_lane": 0
   },
   "SelfCheckoutTill 2": {
-    "lane_open": "Open",
-    "customers_in_self_checkout_lane": 1
+    "lane_open": "Closed",
+    "customers_in_self_checkout_lane": 0
   },
   "SelfCheckoutTill 3": {
-    "lane_open": "Open",
-    "customers_in_self_checkout_lane": 1
+    "lane_open": "Closed",
+    "customers_in_self_checkout_lane": 0
   },
   "SelfCheckoutTill 4": {
-    "lane_open": "Open",
-    "customers_in_self_checkout_lane": 1
+    "lane_open": "Closed",
+    "customers_in_self_checkout_lane": 0
   },
   "SelfCheckoutTill 5": {
-    "lane_open": "Open",
-    "customers_in_self_checkout_lane": 1
+    "lane_open": "Closed",
+    "customers_in_self_checkout_lane": 0
   },
   "SelfCheckoutTill 6": {
     "lane_open": "Closed",

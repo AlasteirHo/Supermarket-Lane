@@ -1,37 +1,32 @@
 {
-  "Customer 2": {
-    "CustomerID": "C2",
-    "Items In Basket": 5,
-    "Lane Type": "SelfCheckout",
-    "Process Time": 30,
-    "self_checkout_lane_number": 1
+  "C6": {
+    "customer_id": "C6",
+    "items_in_basket": 3,
+    "lane_type": "SelfCheckout",
+    "process_time": 18
   },
-  "Customer 8": {
-    "CustomerID": "C8",
-    "Items In Basket": 5,
-    "Lane Type": "SelfCheckout",
-    "Process Time": 42,
-    "self_checkout_lane_number": 2
+  "C10": {
+    "customer_id": "C10",
+    "items_in_basket": 3,
+    "lane_type": "SelfCheckout",
+    "process_time": 18
   },
-  "Customer 9": {
-    "CustomerID": "C9",
-    "Items In Basket": 4,
-    "Lane Type": "SelfCheckout",
-    "Process Time": 42,
-    "self_checkout_lane_number": 3
+  "C14": {
+    "customer_id": "C14",
+    "items_in_basket": 3,
+    "lane_type": "SelfCheckout",
+    "process_time": 18
   },
-  "Customer 10": {
-    "CustomerID": "C10",
-    "Items In Basket": 2,
-    "Lane Type": "SelfCheckout",
-    "Process Time": 42,
-    "self_checkout_lane_number": 4
+  "C1": {
+    "customer_id": "C1",
+    "items_in_basket": 5,
+    "lane_type": "SelfCheckout",
+    "process_time": 30
   },
-  "Customer 11": {
-    "CustomerID": "C11",
-    "Items In Basket": 6,
-    "Lane Type": "SelfCheckout",
-    "Process Time": 42,
-    "self_checkout_lane_number": 5
+  "C13": {
+    "customer_id": "C13",
+    "items_in_basket": 5,
+    "lane_type": "SelfCheckout",
+    "process_time": 30
   }
 }
