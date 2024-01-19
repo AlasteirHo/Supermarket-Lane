@@ -84,14 +84,6 @@ class CashierLanes(Lanes):
         except KeyError:
             print(f"Lane Number {lane_number} was not found")
 
-    def find_next_available_lane(self):
-        # Find the next available cashier lane.
-        data = self.extract_lanes("cashier")
-        for i in range(1, len(data) + 2):
-            lane_number = f"LaneNumber {i}"
-            if lane_number not in data:
-                return i
-
     def open_new_lane(self, best_lane):
         # Open a new cashier lane if the current lane is full.
         data = self.extract_lanes("cashier")
