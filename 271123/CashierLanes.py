@@ -89,8 +89,12 @@ class CashierLanes(Lanes):
         data = self.extract_lanes("cashier")
         customers_in_lane = data[best_lane]["customers_in_lane"]
 
+        # Check if the current lane is full (maximum customers is 5).
         if customers_in_lane == 5:
+            # Determine the number for the new lane.
             new_lane_number = int(best_lane.split()[-1]) + 1
+
+            # Add a new cashier lane with the next available lane number.
             self.add_new_cashier_lanes(new_lane_number)
 
     def close_lane(self):
@@ -98,28 +102,34 @@ class CashierLanes(Lanes):
         data = self.extract_lanes("cashier")
         empty_lanes = []
 
+        # Iterate over cashier lanes and identify empty or negatively impacted lanes.
         for lane_number, customers in data.items():
             if customers["customers_in_lane"] == 0:
                 empty_lanes.append(lane_number)
             elif customers["customers_in_lane"] < 0:  # Avoid negative customer counts impacting future lanes.
                 empty_lanes.append(lane_number)
 
+        # Check if there are empty lanes to be closed.
         if len(empty_lanes) != 0:
+            # Remove empty lanes from the data.
             for lanes in empty_lanes:
                 del data[lanes]
+
+            # Write the updated cashier lane data to the file.
+            self.write_cashier_lane_file(data)
 
         self.write_cashier_lane_file(data)
 
     def process_items(self):
         # Process items for customers in cashier lanes.
         customers_in_cashier = self.extract_customer_data("cashier")
-        for keys in customers_in_cashier:
+        for keys in customers_in_cashier: #Loops through the number of customers in cashier lanes.
             updated_customers_dict = self.extract_customer_data("cashier")
             delays = (updated_customers_dict[keys]["process_time"])  # Calculated using the formula given.
             customer_lane_number = (updated_customers_dict[keys]["cashier_lane_number"])
-            time.sleep(2)
-            self.decrease_lane_number(customer_lane_number)
-            self.update_and_delete_customer_file(keys)
+            time.sleep(delays)
+            self.decrease_lane_number(customer_lane_number) #Decreases the lane number after removal.
+            self.update_and_delete_customer_file(keys) #Shows the deletion in the files.
 
     def decrease_lane_number(self, number):
         # Decrease the customer count in a cashier lane.

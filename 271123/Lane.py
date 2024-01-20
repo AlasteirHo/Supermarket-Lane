@@ -24,8 +24,8 @@ class Lanes:
                     "customers_in_lane": 0,
                 }
             }
-            self.cashier_lane.update(lane_dict)
-            self.write_lane("cashier", self.cashier_lane)
+            self.cashier_lane.update(lane_dict) #Updates the current dict, at start the dict is empty.
+            self.write_lane("cashier", self.cashier_lane) #Writes the new dict into the cashier file.
         elif lane_type == "self_checkout":
             # Creating a self-checkout lane.
             lane_dict = {
@@ -34,8 +34,8 @@ class Lanes:
                     "customers_in_self_checkout_lane": 0,
                 } for lane_number in range(1, MAX_SELF_CHECKOUT_LANE + 1)
             }
-            self.self_checkout.update(lane_dict)
-            self.write_lane("self_checkout", self.self_checkout)
+            self.self_checkout.update(lane_dict) #Updates the current self_checkout dict, at the start the dict is empty.
+            self.write_lane("self_checkout", self.self_checkout) #Writes the new self_checkout dict in the self_checkout file.
 
     def write_lane(self, lane_type, data):
         if lane_type == "cashier":
@@ -93,7 +93,7 @@ class Lanes:
         # Sorting customer data based on basket size.
         customer_data = self.extract_customers()
         self.ordered_dict_items = dict(sorted(customer_data.items(), key=lambda item: item[1]['basket_size']))
-        self.set_customer_data()
+        self.set_customer_data() # Writes the ordered customers in OrderedCustomers.json
         return self.ordered_dict_items
 
     @staticmethod
@@ -111,8 +111,8 @@ class Lanes:
         data = self.extract_lanes("cashier")
         for lane_number, lane_data in data.items():
             total_customers += lane_data["customers_in_lane"]
-        if total_customers == MAX_CASHIER_LANE * 5:
-            return "Lane Saturation"
+        if total_customers == MAX_CASHIER_LANE * 5: #If there are a total of 25 customers in Cashier Lanes.
+            return "Lane Saturation" #Return Lane Saturation
         else:
             return total_customers
 
@@ -122,13 +122,13 @@ class Lanes:
         data = self.extract_lanes("self_checkout")
         for lane_number, lane_data in data.items():
             total_customers += lane_data["customers_in_self_checkout_lane"]
-        if total_customers == MAX_SELF_CHECKOUT_LANE:
-            return "Lane Saturation"
+        if total_customers == MAX_SELF_CHECKOUT_LANE: #Checks to see if the maximum number of customers in self_checkout
+            return "Lane Saturation" #Return Lane Saturation if so.
         else:
             return total_customers
 
     def display_lane_status(self):
-        # Displaying the status of open cashier and self-checkout lanes.
+        # Displaying the status of open cashier and open self-checkout lanes.
         cashier_lanes_data = self.extract_lanes("cashier")
         self_checkout_lanes_data = self.extract_lanes("self_checkout")
 
@@ -140,7 +140,8 @@ class Lanes:
             if lane_details['lane_open'] == 'Open' and lane_details["customers_in_self_checkout_lane"] == 1:
                 print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_self_checkout_lane']}")
 
-# Checkout1 = Lanes()
+Checkout1 = Lanes()
+# Checkout1.create_lane("cashier",1)
 # gui = tk.Tk()
 # gui.title("Simulation Interface")
 # button1 = tk.Button(gui, text="Display Lane Status", command=Checkout1.display_lane_status)
