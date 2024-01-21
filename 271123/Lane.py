@@ -130,19 +130,14 @@ class Lanes:
         self_checkout_lanes_data = self.extract_lanes("self_checkout")
 
         for lane_name, lane_details in cashier_lanes_data.items():
-            if lane_details['lane_open'] == 'Open' and lane_details["customers_in_lane"] != 0:
-                print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
+            print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
 
         total_customers = sum(item["customers_in_self_checkout_lane"] for item in self_checkout_lanes_data.values())
         print(f"SelfCheckout: {"*" * total_customers}")
 
-# gui = tk.Tk()
-# gui.title("Simulation Interface")
-# button1 = tk.Button(gui, text="Display Lane Status", command=Checkout1.display_lane_status)
-# button1.pack()
-# button2 = tk.Button(gui, text="Exit Simulation", command=exit)
-# button2.pack()
-# tk.mainloop()
+
+
+
 Checkout1 = Lanes()
 # Checkout1.display_lane_status()
 # Checkout1.create_lane("cashier")
