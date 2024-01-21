@@ -2,6 +2,7 @@ from Lane import Lanes
 import json
 import time
 
+
 class CashierLanes(Lanes):
     def __init__(self):
         super().__init__()
@@ -123,13 +124,13 @@ class CashierLanes(Lanes):
     def process_items(self):
         # Process items for customers in cashier lanes.
         customers_in_cashier = self.extract_customer_data("cashier")
-        for keys in customers_in_cashier: #Loops through the number of customers in cashier lanes.
+        for keys in customers_in_cashier:  # Loops through the number of customers in cashier lanes.
             updated_customers_dict = self.extract_customer_data("cashier")
             delays = (updated_customers_dict[keys]["process_time"])  # Calculated using the formula given.
             customer_lane_number = (updated_customers_dict[keys]["cashier_lane_number"])
-            time.sleep(delays)
-            self.decrease_lane_number(customer_lane_number) #Decreases the lane number after removal.
-            self.update_and_delete_customer_file(keys) #Shows the deletion in the files.
+            time.sleep(2)
+            self.decrease_lane_number(customer_lane_number)  # Decreases the lane number after removal.
+            self.update_and_delete_customer_file(keys)  # Shows the deletion in the files.
 
     def decrease_lane_number(self, number):
         # Decrease the customer count in a cashier lane.
@@ -172,18 +173,17 @@ class CashierLanes(Lanes):
     def main(self):
         # Main simulation function for cashier lanes.
         customers = self.extract_customer_data("cashier")
-        iteration = 0
         for customer, lane in customers.items():
             best_lane = self.find_best_lane()
             self.add_lane_number_to_customer(customer, best_lane)
             self.open_new_lane(best_lane)
             self.increment_cashier_lane(best_lane)
+            # self.display_lane_status()
         self.process_items()
         self.close_lane()
 
+
 # Uncommented code for creating an instance of CashierLanes and running the simulation.
-C1 = CashierLanes()
-C1.main()
 # C1.increment_cashier_lane()
 # print(C1.find_best_lane())
 

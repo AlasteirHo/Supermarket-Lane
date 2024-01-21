@@ -54,7 +54,7 @@ class SelfCheckout(Lanes):
 
         if customer_id in customers:
             del customers[customer_id]
-            print(f"The key {customer_id} has been deleted")
+            # print(f"The key {customer_id} has been deleted")
             with open("StoringData/SelfCheckoutData/SelfCheckout.json", "w") as f:
                 f.write(json.dumps(customers, indent=2))
         else:
@@ -88,7 +88,7 @@ class SelfCheckout(Lanes):
             updated_customer_dict = self.extract_customer_data("self_checkout")
             delays = updated_customer_dict[keys]["process_time"]
             customer_lane_number = updated_customer_dict[keys]["self_checkout_lane_number"]
-            time.sleep(5)
+            time.sleep(2)
             self.decrease_self_checkout_lanes(customer_lane_number)
             self.remove_customer_from_checkout(keys)
 
@@ -125,9 +125,9 @@ class SelfCheckout(Lanes):
         self.process_items()
 
 # Uncommented code for creating an instance of SelfCheckout and running the simulation.
-t = SelfCheckout()
+# t = SelfCheckout()
 # t.create_self_checkout_file()
-t.main()
+# t.main()
 # t.display_lane_status()
 # t.decrease_self_checkout_lanes("SelfCheckoutTill 1")
 # t.create_self_checkout_file()

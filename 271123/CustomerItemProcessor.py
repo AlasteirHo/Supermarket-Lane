@@ -17,7 +17,7 @@ class ItemProcessing:
             if basket_size < 1 or basket_size > 30:
                 raise ValueError("Basket size must be between 1 and 30.")
         except ValueError as e:
-            print(f"Error in calculate_processing_time: {e}")
+            print(f"Error in calculate_processing_time: {e}")  # Error message if basket_size is out of range
             return None, None
 
         # Calculate processing times for both cashier and self-checkout
@@ -32,7 +32,8 @@ class ItemProcessing:
             lottery_status = "hard luck, better luck next time!"
             lottery_message = ""
             basket_size = int(customer.basket_size)
-            if 10 < basket_size <= 30:
+            if 10 < basket_size <= 30:  # If a basket size is within range, it will randomly assign the customer a
+                # ticket
                 customer.lottery_ticket = random.choice([True, False])
                 if customer.lottery_ticket:
                     lottery_status = "Lucky Winner!"
@@ -44,9 +45,9 @@ class ItemProcessing:
 
     @staticmethod
     def display_customer_details(customer_dict):
-        # Display details of each customer, including lottery status and processing times in the specified format
+        # Display details of each customer, by traversing through the customer dictionary
         for customer_id, customer in customer_dict.items():
-            lottery_status,lottery_message = ItemProcessing.award_lottery(customer)
+            lottery_status, lottery_message = ItemProcessing.award_lottery(customer)
 
             customer_key = "C" + str(customer.customer_id)
             print(
@@ -58,9 +59,8 @@ class ItemProcessing:
 
 
 class Customer(ItemProcessing):
-    # Class variables to store customer data and track current customer ID
-    Customer_Dict = {}
-    current_customer_id = 1
+    # Class variables to store customer data in a dictionary and track current customer ID
+    current_customer_id = 1  # Acts as a counter/pointer
 
     def __init__(self):
         super().__init__()
@@ -70,26 +70,25 @@ class Customer(ItemProcessing):
         self.processing_time_cashier, self.processing_time_self_checkout = self.calculate_processing_time(
             self.basket_size, ItemProcessing())
         self.lottery_ticket = False
+        self.customer_dict = {}  # Creates a customer dictionary
+
+    def create_customer(self):
+        # Create a new customer, store in the Customer_Dict and JSON file, and increments current_customer_id
+        customer = Customer()
+        self.customer_dict[customer.customer_id] = customer  # Adds customer to dictionary
+        Customer.current_customer_id += 1
+        customer.save_customer_dict_to_json()
+        return customer
 
     @staticmethod
     def basket_size_randomizer():
         # Generate a random basket size between 1 and 30
         return random.randint(1, 30)
 
-    @staticmethod
-    def create_customer():
-        # Create a new customer, store in the Customer_Dict, and increments current_customer_id
-        customer = Customer()
-        Customer.Customer_Dict[customer.customer_id] = customer
-        Customer.current_customer_id += 1
-        customer.save_customer_dict_to_json()
-        return customer
-
-    @staticmethod
-    def save_customer_dict_to_json():
+    def save_customer_dict_to_json(self):
         # Save customer_dict into a JSON file
         customer_data = {}
-        for customer_id, customer in Customer.Customer_Dict.items():
+        for customer_id, customer in self.customer_dict.items():
             customer_data["Customer" + str(customer.customer_id)] = {
                 "customer_id": "C" + str(customer.customer_id),
                 "basket_size": customer.basket_size,
@@ -101,10 +100,9 @@ class Customer(ItemProcessing):
         with open("StoringData/customer_data.json", "w") as f:
             json.dump(customer_data, f, indent=2)
 
-    @staticmethod
-    def display_customer_dict():
+    def display_customer_dict(self):
         # Display details of each customer in the Customer_Dict(for demonstration purposes)
-        for customer_id, customer in Customer.Customer_Dict.items():
+        for customer_id, customer in self.customer_dict.items():
             print(
                 f"customer_id: {'C' + str(customer.customer_id)}, "
                 f"basket_size: {customer.basket_size}, "
@@ -113,9 +111,10 @@ class Customer(ItemProcessing):
                 f"time_at_self_service: {customer.processing_time_self_checkout}\n"
             )
 
+
 # Uncomment the following lines to test the code:
-# C1 = Customer()
-# C1.create_customer()
-# C1.display_customer_details(Customer.Customer_Dict)
+C1 = Customer()
+C1.create_customer()
+C1.display_customer_details(C1.customer_dict)
 # Display's customer_dict for demonstration purposes(not required for functionality)
-# C1.display_customer_dict()
+C1.display_customer_dict()
