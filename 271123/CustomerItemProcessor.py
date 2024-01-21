@@ -28,17 +28,16 @@ class ItemProcessing:
     @staticmethod
     def award_lottery(customer):
         # Determines if the customer wins a lottery ticket based on basket size
-        try:  # Error handling to ensure that basket_size is an integer between 1 and 30
+        try:
+            # Error handling to ensure that basket_size is an integer between 1 and 30
             lottery_status = "hard luck, better luck next time!"
-            lottery_message = ""
             basket_size = int(customer.basket_size)
             if 10 < basket_size <= 30:  # If a basket size is within range, it will randomly assign the customer a
                 # ticket
                 customer.lottery_ticket = random.choice([True, False])
                 if customer.lottery_ticket:
                     lottery_status = "Lucky Winner!"
-                    lottery_message = "### Lucky customer ###"
-            return lottery_status, lottery_message
+            return lottery_status
         except ValueError as e:
             print(f"Error awarding customer a lottery ticket: {e} ")
             return "Lottery status unable to assign due to invalid basket size"
@@ -47,13 +46,12 @@ class ItemProcessing:
     def display_customer_details(customer_dict):
         # Display details of each customer, by traversing through the customer dictionary
         for customer_id, customer in customer_dict.items():
-            lottery_status, lottery_message = ItemProcessing.award_lottery(customer)
-
             customer_key = "C" + str(customer.customer_id)
+            if customer.lottery_ticket:  # If a customer has been awarded a ticket, a message will be printed
+                print("### Lucky customer ###")
             print(
-                f"{lottery_message}\n"
                 f"{customer_key} —> items in basket: {customer.basket_size}, "
-                f"{lottery_status}, \n"
+                f"{customer.lottery_status}, \n"
                 f"Time to process basket at cashier till: {customer.processing_time_cashier} Secs, \n"
                 f"Time to process basket at self—service till: {customer.processing_time_self_checkout} Secs. \n")
 
@@ -75,6 +73,7 @@ class Customer(ItemProcessing):
     def create_customer(self):
         # Create a new customer, store in the Customer_Dict and JSON file, and increments current_customer_id
         customer = Customer()
+        customer.lottery_status = ItemProcessing.award_lottery(customer)
         self.customer_dict[customer.customer_id] = customer  # Adds customer to dictionary
         Customer.current_customer_id += 1
         customer.save_customer_dict_to_json()
