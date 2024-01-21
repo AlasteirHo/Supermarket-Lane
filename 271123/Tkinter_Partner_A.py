@@ -9,24 +9,28 @@ lane = Lanes()
 cashier_lanes = CashierLanes()
 self_checkout = SelfCheckout()
 class SimulatorGUI:
+    is_running = False
     @staticmethod
     def prerequisites():
+        # Functions are called to create lanes.
         lane.create_lane("cashier")
         lane.create_lane("self_checkout")
         self_checkout.create_self_checkout_file()
         cashier_lanes.create_cashier_file()
     def main(self):
-        print("Starting Lane Simulation...")
-        self.prerequisites()
-        print("Files have been created.")
-        self_checkout_total = lane.self_checkout_customer_total()
-        cashier_total = lane.cashier_customer_total()
-        total_customers = self_checkout_total + cashier_total
-        if total_customers == 40:
-            print("Lane saturation")
-        else:
-            self_checkout.main()
-            cashier_lanes.main()
+        self.is_running = True
+        if self.is_running:
+            print("Starting Lane Simulation...")
+            self.prerequisites()
+            print("Files have been created.")
+            self_checkout_total = lane.self_checkout_customer_total()
+            cashier_total = lane.cashier_customer_total()
+            total_customers = self_checkout_total + cashier_total
+            if total_customers == 40:
+                print("Lane saturation")
+            else:
+                self_checkout.main()
+                cashier_lanes.main()
 
     @staticmethod
     def delete_json_contents(file_path):
@@ -39,6 +43,7 @@ class SimulatorGUI:
             print(f"Error deleting contents of {file_path}: {e}")
 
     def stop_simulation(self):
+        self.is_running = False
         lane.create_lane("cashier")
         lane.create_lane("self_checkout")
 
@@ -65,4 +70,5 @@ class SimulatorGUI:
 Sim = SimulatorGUI()
 # Sim.main()
 Sim.interface()
+# Sim.prerequisites()
 # Sim.stop_simulation()
