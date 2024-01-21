@@ -1,64 +1,66 @@
-import random
 import time
-from CustomerItemProcessor import Customer, ItemProcessing
-from CashierLanes import CashierLanes
+import random
+from CustomerItemProcessor import Customer
+
 from Lane import Lanes
+from CashierLanes import CashierLanes
 from SelfCheckoutLanes import SelfCheckout
 
+# Creating global instances of each class to be used as the gui.
 lane = Lanes()
+cashier_lanes = CashierLanes()
 self_checkout = SelfCheckout()
-cashier = CashierLanes()
-
-
-class Simulation(Customer):
+class Simulation:
     def __init__(self):
-        super().__init__()
+        self.is_running = False
+        self.start_time = 0
 
-    def start_simulation(self):
-        num_customers = random.randint(1, 10)  # Randomly creates 1 to 10 customers
-        print(f"Simulation started at: {time.strftime('%H:%M:%S')}\n")
-        for i in range(num_customers):
-            C1 = Customer.create_customer(self)
-            ItemProcessing.display_customer_details({C1.customer_id: C1})
+    def initialize_simulation(self):
+        start_time = time.time()  # Save the start time
+        start_time_str = time.strftime("%H:%M:%S", time.localtime(start_time))
+        print(f"Simulation started at: {start_time_str}")
+        self.is_running = True
 
-        lane.create_lane("cashier")
-        lane.create_lane("self_checkout")
+        # Open lanes here
+        initial_customer = random.randint(1, 10)
+        for i in range(initial_customer):
+            C1 = Customer()
+            C1.create_customer()
 
-        # Once initialization steps are complete, run the main loop
         self.main_loop()
 
-    def spawn_customers(self):
-        time.sleep(random.randint(1, 5))  # Creates a customer at a random interval between 1 and 5 seconds
-        Customer.create_customer(self)
-
     def main_loop(self):
-        # start_time = time.time()
-        while True:
-            # elapsed_time = time.time() - start_time
-            lane.create_lane("cashier")
-            lane.create_lane("self_checkout")
-            lane.sort_customer()
-
+        if self.is_running:
+            interval = random.randint(1, 5)
+            customer = Customer()
+            customer.create_customer()
+            time.sleep(interval)
+    def main(self):
+        self.is_running = True
+        if self.is_running:
+            print("Starting Lane Simulation...")
+            self.prerequisites()
+            print("Files have been created.")
             self_checkout_total = lane.self_checkout_customer_total()
             cashier_total = lane.cashier_customer_total()
-            self.spawn_customers()
             total_customers = self_checkout_total + cashier_total
-
-            self_checkout.create_self_checkout_file()
-            cashier.create_cashier_file()
-            # ItemProcessing.display_customer_details({customer.customer_id: customer})
             if total_customers == 40:
-                print("Lane Saturation")
-
+                print("Lane saturation")
             else:
-                import Lane
-                lane.display_lane_status()
                 self_checkout.main()
-                cashier.main()
+                cashier_lanes.main()
+    @staticmethod
+    def display_cus_details():
+        # Call the static method to display customer details
+        print("--------------------------------------------")
+        Customer.display_customer_details(Customer.customer_dict)
 
-            # Display details of the newly created customer (Add a new If/while loop to validate if a button is clicked)
+    def stop_simulation(self):
+        self.is_running = False
 
-
-if __name__ == "__main__":
-    sim = Simulation()
-    sim.start_simulation()
+S1 = Simulation()
+S1.initialize_simulation()
+max_time = time.time() + 60 * 10    # Runs for 10 minutes
+while time.time() < max_time and S1.is_running:
+    S1.main_loop()
+    S1.display_cus_details()
