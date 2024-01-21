@@ -59,8 +59,9 @@ class ItemProcessing:
 
 
 class Customer(ItemProcessing):
-    # Class variables to store customer data in a dictionary and track current customer ID
+    # Global variables
     current_customer_id = 1  # Acts as a counter/pointer
+    customer_dict = {}  # Creates a customer dictionary
 
     def __init__(self):
         super().__init__()
@@ -70,7 +71,6 @@ class Customer(ItemProcessing):
         self.processing_time_cashier, self.processing_time_self_checkout = self.calculate_processing_time(
             self.basket_size, ItemProcessing())
         self.lottery_ticket = False
-        self.customer_dict = {}  # Creates a customer dictionary
 
     def create_customer(self):
         # Create a new customer, store in the Customer_Dict and JSON file, and increments current_customer_id
@@ -88,7 +88,7 @@ class Customer(ItemProcessing):
     def save_customer_dict_to_json(self):
         # Save customer_dict into a JSON file
         customer_data = {}
-        for customer_id, customer in self.customer_dict.items():
+        for customer_id, customer in Customer.customer_dict.items():
             customer_data["Customer" + str(customer.customer_id)] = {
                 "customer_id": "C" + str(customer.customer_id),
                 "basket_size": customer.basket_size,
@@ -100,9 +100,10 @@ class Customer(ItemProcessing):
         with open("StoringData/customer_data.json", "w") as f:
             json.dump(customer_data, f, indent=2)
 
-    def display_customer_dict(self):
+    @staticmethod
+    def display_customer_dict():
         # Display details of each customer in the Customer_Dict(for demonstration purposes)
-        for customer_id, customer in self.customer_dict.items():
+        for customer_id, customer in Customer.customer_dict.items():
             print(
                 f"customer_id: {'C' + str(customer.customer_id)}, "
                 f"basket_size: {customer.basket_size}, "
