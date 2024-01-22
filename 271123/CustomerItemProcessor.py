@@ -71,7 +71,7 @@ class Customer(ItemProcessing):
         self.lottery_ticket = False
 
     def create_customer(self):
-        # Create a new customer, store in the Customer_Dict and JSON file, and increments current_customer_id
+        # Create a new customer, store in the Customer_Dict and JSON file, and increments current_customer_id by 1
         customer = Customer()
         customer.lottery_status = ItemProcessing.award_lottery(customer)
         self.customer_dict[customer.customer_id] = customer  # Adds customer to dictionary
@@ -84,7 +84,8 @@ class Customer(ItemProcessing):
         # Generate a random basket size between 1 and 30
         return random.randint(1, 30)
 
-    def save_customer_dict_to_json(self):
+    @staticmethod
+    def save_customer_dict_to_json():
         # Save customer_dict into a JSON file
         customer_data = {}
         for customer_id, customer in Customer.customer_dict.items():
@@ -111,10 +112,10 @@ class Customer(ItemProcessing):
                 f"time_at_self_service: {customer.processing_time_self_checkout}\n"
             )
 
-
-# Uncomment the following lines to test the code:
-C1 = Customer()
-C1.create_customer()
-C1.display_customer_details(C1.customer_dict)
+# Uncomment the following lines to run the code:
+# for i in range(1, 5):
+# C1 = Customer()
+# C1.create_customer()
+# C1.display_customer_details(C1.customer_dict)
 # Display's customer_dict for demonstration purposes(not required for functionality)
-C1.display_customer_dict()
+# C1.display_customer_dict()
