@@ -1,17 +1,7 @@
 {
   "LaneNumber 1": {
-    "time_stamp": "15:36",
+    "time_stamp": "10:43",
     "lane_open": "Open",
-    "customers_in_lane": 4
-  },
-  "LaneNumber 2": {
-    "time_stamp": "17:9",
-    "lane_open": "Open",
-    "customers_in_lane": 2
-  },
-  "LaneNumber 3": {
-    "time_stamp": "17:9",
-    "lane_open": "Open",
-    "customers_in_lane": 2
+    "customers_in_lane": 0
   }
 }

@@ -128,7 +128,8 @@ class CashierLanes(Lanes):
             updated_customers_dict = self.extract_customer_data("cashier")
             delays = (updated_customers_dict[keys]["process_time"])  # Calculated using the formula given.
             customer_lane_number = (updated_customers_dict[keys]["cashier_lane_number"])
-            time.sleep(2)
+            self.display_lane_status()
+            time.sleep(5) #Value changed for showcase.
             self.decrease_lane_number(customer_lane_number)  # Decreases the lane number after removal.
             self.update_and_delete_customer_file(keys)  # Shows the deletion in the files.
 

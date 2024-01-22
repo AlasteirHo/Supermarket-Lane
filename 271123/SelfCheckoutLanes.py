@@ -88,7 +88,8 @@ class SelfCheckout(Lanes):
             updated_customer_dict = self.extract_customer_data("self_checkout")
             delays = updated_customer_dict[keys]["process_time"]
             customer_lane_number = updated_customer_dict[keys]["self_checkout_lane_number"]
-            time.sleep(2)
+            self.display_lane_status()
+            time.sleep(5) #Value changed for showcase.
             self.decrease_self_checkout_lanes(customer_lane_number)
             self.remove_customer_from_checkout(keys)
 
@@ -103,16 +104,6 @@ class SelfCheckout(Lanes):
             self.write_self_checkout_customer(customers)
         except KeyError:
             print("Customer ID not found.")
-
-    def display_lane_status(self):
-        # Display the status of open self-checkout lanes.
-        lanes = self.extract_lanes("self_checkout")
-        total_customers = 0
-        for lane_name, lane_details in lanes.items():
-            if lane_details['lane_open'] == 'Open':
-                total_customers += lane_details['customers_in_lane']
-
-        return total_customers
 
     def main(self):
         # Main simulation function for self-checkout.

@@ -69,7 +69,7 @@ class SimulatorGUI:
         button3.grid(row=1, column=2, padx=10, pady=10)
 
         button4 = tk.Button(gui, text="Exit Simulation", command=exit)
-        button4.pack()
+        button4.grid(row=1, column=3, padx=10, pady=10)
         tk.mainloop()
 
 Sim = SimulatorGUI()
