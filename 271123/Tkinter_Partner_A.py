@@ -72,5 +72,6 @@ class SimulatorGUI:
         button4.grid(row=1, column=3, padx=10, pady=10)
         tk.mainloop()
 
-Sim = SimulatorGUI()
-Sim.interface()
+if __name__ == "__main__":
+    Sim = SimulatorGUI()
+    Sim.interface()

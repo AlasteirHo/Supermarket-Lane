@@ -37,24 +37,24 @@ class SimulatorGUI:
 
     def start_simulation(self):
         self.start_time = time.time()
-        self.clear_customer_data()
+        self.clear_customer_data() # Clears the dictionary as well as the JSON file before starting a new simulation
         self.simulation.initialize_simulation()
         self.spawn_customers()
 
     def spawn_customers(self):
         if self.simulation.is_running:
             self.simulation.main_loop()
-            interval = random.randint(1,5)
+            interval = random.randint(1,5) # Creates customers at a random interval between 1 and 5 seconds
             self.gui.after(1000 * interval, self.spawn_customers)
 
     def display(self):
         self.simulation.display_cus_details()
 
-    def stop_button(self):
+    def stop_button(self):  # Pause simulation when clicked and display's elapsed time
         elapsed_time = time.time() - self.start_time
         print(f"Total Elapsed Time: {elapsed_time:.2f} seconds")
         self.simulation.stop_simulation()
-        messagebox.showinfo("Simulation Stopped", "Simulation has been stopped.")
+        messagebox.showinfo("Simulation Stopped", "Simulation has been stopped.") # Informs user
 
     @staticmethod
     def clear_customer_data():

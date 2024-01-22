@@ -51,7 +51,7 @@ class Simulation:
         lane.sort_customer()
 
     @staticmethod
-    def customer_creator():
+    def customer_creator(): # Creates a customer when called on
         customer = Customer()
         customer.create_customer()
 
@@ -64,9 +64,12 @@ class Simulation:
     def stop_simulation(self):
         self.is_running = False
 
-# S1 = Simulation()
-# S1.initialize_simulation()
-# max_time = time.time() + 60 * 10    # Runs for 10 minutes
-# while time.time() < max_time and S1.is_running:
-# S1.main_loop()
-# S1.display_cus_details()
+if __name__ == "__main__":
+    S1 = Simulation()
+    S1.initialize_simulation()
+    max_time = time.time() + 60 * 10    # Runs for 10 minutes
+    while time.time() < max_time and S1.is_running:
+        interval = random.randint(1,5)
+        S1.main_loop()
+        S1.display_cus_details()
+        time.sleep(interval)
