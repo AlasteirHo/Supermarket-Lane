@@ -67,12 +67,14 @@ class Simulation:
     def stop_simulation(self):
         self.is_running = False
 
-# if __name__ == "__main__":
-#     S1 = Simulation()
-#     S1.initialize_simulation()
-#     max_time = time.time() + 60 * 10    # Runs for 10 minutes
-#     while time.time() < max_time and S1.is_running:
-#         interval = random.randint(1,5)
-#         S1.main_loop()
-#         S1.display_cus_details()
-#         time.sleep(interval)
+if __name__ == "__main__":
+    S1 = Simulation()
+    S1.initialize_simulation()
+    max_time = time.time() + 60 * 10    # Runs for 10 minutes
+    while time.time() < max_time and S1.is_running:
+        interval = random.randint(1,5)
+        S1.main_loop()
+        S1.display_cus_details()
+        S1.update_lane()
+        lane.display_lane_status()
+        time.sleep(interval)
