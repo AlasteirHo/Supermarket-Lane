@@ -1,5 +1,7 @@
-import tkinter as tk
+
 import time
+import random
+import tkinter as tk
 from tkinter import messagebox
 from Run import Simulation
 from CustomerItemProcessor import Customer
@@ -43,7 +45,8 @@ class SimulatorGUI:
 
     def spawn_customers(self):
         if self.simulation.is_running:
-            self.simulation.run_sim()
+            self.simulation.main_loop()
+            interval = random.randint(1,5)
             self.gui.after(1000, self.spawn_customers)
 
     def display(self):
@@ -67,7 +70,7 @@ class SimulatorGUI:
         messagebox.showinfo("Restart Simulation", "Simulation has reset.")
 
 
-
-simulator = SimulatorGUI()
-simulator.interface()
-tk.mainloop()
+if __name__ == "__main__":
+    simulator = SimulatorGUI()
+    simulator.interface()
+    tk.mainloop()

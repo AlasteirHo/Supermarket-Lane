@@ -18,12 +18,15 @@ class Simulation:
             C1 = Customer()
             C1.create_customer()
         self.is_running = True
-        self.run_sim()
 
-    def run_sim(self):
-            customer = Customer()
-            customer.create_customer()
 
+    def main_loop(self):
+        self.customer_creator()
+
+    @staticmethod
+    def customer_creator():
+        customer = Customer()
+        customer.create_customer()
 
     @staticmethod
     def display_cus_details():
