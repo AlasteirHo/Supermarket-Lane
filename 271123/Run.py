@@ -1,7 +1,13 @@
 import time
 import random
 from CustomerItemProcessor import Customer
+from Lane import Lanes
+from CashierLanes import CashierLanes
+from SelfCheckoutLanes import SelfCheckout
 
+lane = Lanes()
+cashier_lanes = CashierLanes()
+self_checkout = SelfCheckout()
 
 class Simulation:
     def __init__(self):
@@ -19,6 +25,26 @@ class Simulation:
             C1.create_customer()
         self.is_running = True
 
+    def initalize_lanes(self):
+        lane.create_lane("cashier")
+        lane.create_lane("self_checkout")
+        self_checkout.create_self_checkout_file()
+        cashier_lanes.create_cashier_file()
+
+    def update_lane(self):
+        self.is_running = True
+        if self.is_running:
+            print("Starting Lane Simulation...")
+            self.initalize_lanes()
+            print("Files have been created.")
+            self_checkout_total = lane.self_checkout_customer_total()
+            cashier_total = lane.cashier_customer_total()
+            total_customers = self_checkout_total + cashier_total #Will check if all lanes are full or not.
+            if total_customers == 40:
+                print("Lane saturation") #Will print Lane saturation and avoid the next iterations.
+            else:
+                self_checkout.main()
+                cashier_lanes.main()
 
     def main_loop(self):
         self.customer_creator()

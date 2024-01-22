@@ -128,17 +128,9 @@ class Lanes:
         # Displaying the status of open cashier and open self-checkout lanes.
         cashier_lanes_data = self.extract_lanes("cashier")
         self_checkout_lanes_data = self.extract_lanes("self_checkout")
-
+        #Loops through the number of customers in the cashier lanes and outputs them.
         for lane_name, lane_details in cashier_lanes_data.items():
             print(f"{lane_name} (Cashier): {'*' * lane_details['customers_in_lane']}")
-
+        #Loops through the number of customers in the self checkout lane.
         total_customers = sum(item["customers_in_self_checkout_lane"] for item in self_checkout_lanes_data.values())
         print(f"SelfCheckout: {"*" * total_customers}")
-
-
-
-
-Checkout1 = Lanes()
-# Checkout1.display_lane_status()
-# Checkout1.create_lane("cashier")
-# Checkout1.extract_customer_data()

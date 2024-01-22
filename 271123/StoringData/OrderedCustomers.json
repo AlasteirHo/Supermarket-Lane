@@ -1,107 +1,51 @@
 {
-  "C6": {
-    "customer_id": "C6",
-    "basket_size": 3,
-    "lottery_ticket": false,
-    "time_at_cashier": 12,
-    "time_at_self_service": 18
-  },
-  "C10": {
-    "customer_id": "C10",
-    "basket_size": 3,
-    "lottery_ticket": false,
-    "time_at_cashier": 12,
-    "time_at_self_service": 18
-  },
-  "C14": {
-    "customer_id": "C14",
-    "basket_size": 3,
-    "lottery_ticket": false,
-    "time_at_cashier": 12,
-    "time_at_self_service": 18
-  },
-  "C1": {
+  "Customer1": {
     "customer_id": "C1",
     "basket_size": 5,
     "lottery_ticket": false,
     "time_at_cashier": 20,
     "time_at_self_service": 30
   },
-  "C13": {
-    "customer_id": "C13",
-    "basket_size": 5,
+  "Customer4": {
+    "customer_id": "C4",
+    "basket_size": 6,
     "lottery_ticket": false,
-    "time_at_cashier": 20,
-    "time_at_self_service": 30
+    "time_at_cashier": 24,
+    "time_at_self_service": 36
   },
-  "C5": {
-    "customer_id": "C5",
+  "Customer6": {
+    "customer_id": "C6",
+    "basket_size": 10,
+    "lottery_ticket": false,
+    "time_at_cashier": 40,
+    "time_at_self_service": 60
+  },
+  "Customer2": {
+    "customer_id": "C2",
     "basket_size": 11,
     "lottery_ticket": false,
     "time_at_cashier": 44,
     "time_at_self_service": 66
   },
-  "C4": {
-    "customer_id": "C4",
-    "basket_size": 13,
-    "lottery_ticket": true,
-    "time_at_cashier": 52,
-    "time_at_self_service": 78
-  },
-  "C12": {
-    "customer_id": "C12",
-    "basket_size": 17,
+  "Customer7": {
+    "customer_id": "C7",
+    "basket_size": 11,
     "lottery_ticket": false,
-    "time_at_cashier": 68,
-    "time_at_self_service": 102
+    "time_at_cashier": 44,
+    "time_at_self_service": 66
   },
-  "C8": {
-    "customer_id": "C8",
+  "Customer3": {
+    "customer_id": "C3",
     "basket_size": 18,
     "lottery_ticket": true,
     "time_at_cashier": 72,
     "time_at_self_service": 108
   },
-  "C16": {
-    "customer_id": "C16",
-    "basket_size": 20,
-    "lottery_ticket": true,
-    "time_at_cashier": 80,
-    "time_at_self_service": 120
-  },
-  "C7": {
-    "customer_id": "C7",
-    "basket_size": 24,
+  "Customer5": {
+    "customer_id": "C5",
+    "basket_size": 23,
     "lottery_ticket": false,
-    "time_at_cashier": 96,
-    "time_at_self_service": 144
-  },
-  "C11": {
-    "customer_id": "C11",
-    "basket_size": 27,
-    "lottery_ticket": true,
-    "time_at_cashier": 108,
-    "time_at_self_service": 162
-  },
-  "C3": {
-    "customer_id": "C3",
-    "basket_size": 29,
-    "lottery_ticket": true,
-    "time_at_cashier": 116,
-    "time_at_self_service": 174
-  },
-  "C9": {
-    "customer_id": "C9",
-    "basket_size": 30,
-    "lottery_ticket": true,
-    "time_at_cashier": 120,
-    "time_at_self_service": 180
-  },
-  "C15": {
-    "customer_id": "C15",
-    "basket_size": 30,
-    "lottery_ticket": true,
-    "time_at_cashier": 120,
-    "time_at_self_service": 180
+    "time_at_cashier": 92,
+    "time_at_self_service": 138
   }
 }

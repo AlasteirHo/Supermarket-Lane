@@ -123,12 +123,3 @@ class SelfCheckout(Lanes):
             self.open_self_checkout_lanes(lane)
 
         self.process_items()
-
-# Uncommented code for creating an instance of SelfCheckout and running the simulation.
-# t = SelfCheckout()
-# t.create_self_checkout_file()
-# t.main()
-# t.display_lane_status()
-# t.decrease_self_checkout_lanes("SelfCheckoutTill 1")
-# t.create_self_checkout_file()
-# t.process_items()

@@ -181,14 +181,3 @@ class CashierLanes(Lanes):
             # self.display_lane_status()
         self.process_items()
         self.close_lane()
-
-
-# Uncommented code for creating an instance of CashierLanes and running the simulation.
-# C1.increment_cashier_lane()
-# print(C1.find_best_lane())
-
-# This will add customers and increment the lanes.
-# C1.open_new_lane(C1.find_best_lane())
-# Functions that need to be used for later:
-# C1.create_cashier_file()
-#

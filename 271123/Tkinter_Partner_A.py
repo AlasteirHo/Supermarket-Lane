@@ -9,7 +9,7 @@ lane = Lanes()
 cashier_lanes = CashierLanes()
 self_checkout = SelfCheckout()
 class SimulatorGUI:
-    is_running = False
+    is_running = False #Will signify if the main function will run or not
     @staticmethod
     def prerequisites():
         # Functions are called to create lanes.
@@ -25,9 +25,9 @@ class SimulatorGUI:
             print("Files have been created.")
             self_checkout_total = lane.self_checkout_customer_total()
             cashier_total = lane.cashier_customer_total()
-            total_customers = self_checkout_total + cashier_total
+            total_customers = self_checkout_total + cashier_total #Will check if all lanes are full or not.
             if total_customers == 40:
-                print("Lane saturation")
+                print("Lane saturation") #Will print Lane saturation and avoid the next iterations.
             else:
                 self_checkout.main()
                 cashier_lanes.main()
@@ -43,14 +43,15 @@ class SimulatorGUI:
             print(f"Error deleting contents of {file_path}: {e}")
 
     def stop_simulation(self):
-        self.is_running = False
-        lane.create_lane("cashier")
+        self.is_running = False #Will set it to false to stop the main() from running.
+        lane.create_lane("cashier") #Will re-create the lanes.
         lane.create_lane("self_checkout")
 
-        self.delete_json_contents("StoringData/CashierData/Cashier.json")
+        self.delete_json_contents("StoringData/CashierData/Cashier.json") #Will delete the current customers.
         self.delete_json_contents("StoringData/SelfCheckoutData/SelfCheckout.json")
 
     def interface(self):
+        #Initilaises the buttons and tkinter.
         gui = tk.Tk()
         gui.title("Simulation Interface")
 
@@ -68,7 +69,4 @@ class SimulatorGUI:
         tk.mainloop()
 
 Sim = SimulatorGUI()
-# Sim.main()
 Sim.interface()
-# Sim.prerequisites()
-# Sim.stop_simulation()
