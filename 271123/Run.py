@@ -15,11 +15,11 @@ class Simulation:
         self.start_time = 0
 
     def initialize_simulation(self):
-        start_time = time.time()  # Save the start time
+        start_time = time.time()  # Save the start time to be used to print elapsed time at the end
         start_time_str = time.strftime("%H:%M:%S", time.localtime(start_time))
-        print(f"Simulation started at: {start_time_str}")
+        print(f"Simulation started at: {start_time_str}") # Prints start time at the beginning
 
-        initial_customer = random.randint(1, 10)
+        initial_customer = random.randint(1, 10) # Creates a random number of customers between 1 and 10
         for i in range(initial_customer):
             C1 = Customer()
             C1.create_customer()
@@ -46,7 +46,7 @@ class Simulation:
                 self_checkout.main()
                 cashier_lanes.main()
 
-    def main_loop(self):
+    def main_loop(self): # The main loop to create customers and sort them into their respective lanes
         self.customer_creator()
         lane.sort_customer()
 
@@ -64,12 +64,12 @@ class Simulation:
     def stop_simulation(self):
         self.is_running = False
 
-if __name__ == "__main__":
-    S1 = Simulation()
-    S1.initialize_simulation()
-    max_time = time.time() + 60 * 10    # Runs for 10 minutes
-    while time.time() < max_time and S1.is_running:
-        interval = random.randint(1,5)
-        S1.main_loop()
-        S1.display_cus_details()
-        time.sleep(interval)
+# if __name__ == "__main__":
+#     S1 = Simulation()
+#     S1.initialize_simulation()
+#     max_time = time.time() + 60 * 10    # Runs for 10 minutes
+#     while time.time() < max_time and S1.is_running:
+#         interval = random.randint(1,5)
+#         S1.main_loop()
+#         S1.display_cus_details()
+#         time.sleep(interval)

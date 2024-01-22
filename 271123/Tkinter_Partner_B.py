@@ -41,7 +41,7 @@ class SimulatorGUI:
         self.simulation.initialize_simulation()
         self.spawn_customers()
 
-    def spawn_customers(self):
+    def spawn_customers(self): # Whilst the simulation is running, run the main loop in the Run file
         if self.simulation.is_running:
             self.simulation.main_loop()
             interval = random.randint(1,5) # Creates customers at a random interval between 1 and 5 seconds
@@ -57,7 +57,7 @@ class SimulatorGUI:
         messagebox.showinfo("Simulation Stopped", "Simulation has been stopped.") # Informs user
 
     @staticmethod
-    def clear_customer_data():
+    def clear_customer_data(): # Clears the customer_dict and json file whenc
         Customer.customer_dict = {}
         Customer.current_customer_id = 1
         with open("StoringData/customer_data.json", "w") as f:
