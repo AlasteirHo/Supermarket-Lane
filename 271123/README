@@ -1,0 +1,25 @@
+Dependency of files:
+
+**REQUIRES ALL FILES**
+Tkinter_Partner_A.py
+Tkinter_Partner_B.py
+Run.py
+
+Requires some files (Requires each other to work)
+Lanes.py
+CashierLanes.py
+SelfCheckoutLanes.py
+CustomerItemProcessor.py
+
+Root file(0 Dependency):
+CustomerItemProcessor
+
+Coursework features:
+F1- Lanes.py
+    CashierLanes.py
+    SelfCheckoutLanes.py
+
+F2- CustomerItemProcessor.py
+
+F3- Run.py
+

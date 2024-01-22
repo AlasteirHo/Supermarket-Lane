@@ -26,14 +26,17 @@ class Simulation:
         self.is_running = True
 
     def initalize_lanes(self):
+        #Initalizes the lanes that are needed by default.
         lane.create_lane("cashier")
         lane.create_lane("self_checkout")
+        #Creates the files needed.
         self_checkout.create_self_checkout_file()
         cashier_lanes.create_cashier_file()
 
     def update_lane(self):
         self.is_running = True
         if self.is_running:
+            #Starts the simulation by printing a message and initialize the lanes
             print("Starting Lane Simulation...")
             self.initalize_lanes()
             print("Files have been created.")
