@@ -17,6 +17,7 @@ class SimulatorGUI:
         lane.create_lane("self_checkout")
         self_checkout.create_self_checkout_file()
         cashier_lanes.create_cashier_file()
+
     def main(self):
         self.is_running = True
         if self.is_running:
@@ -49,20 +50,23 @@ class SimulatorGUI:
 
         self.delete_json_contents("StoringData/CashierData/Cashier.json") #Will delete the current customers.
         self.delete_json_contents("StoringData/SelfCheckoutData/SelfCheckout.json")
+        self.delete_json_contents("StoringData/customer_data.json")
 
     def interface(self):
-        #Initilaises the buttons and tkinter.
+        #Initilaises the buttons and tkinter
         gui = tk.Tk()
         gui.title("Simulation Interface")
+        window_width = 625
+        gui.geometry(f"{window_width}x50")
 
         button1 = tk.Button(gui, text="Run Simulation", command=self.main)
-        button1.pack()
+        button1.grid(row=1, column=0, padx=10, pady=10)
 
         button2 = tk.Button(gui, text="Stop Simulation", command=self.stop_simulation)
-        button2.pack()
+        button2.grid(row=1, column=1, padx=10, pady=10)
 
         button3 = tk.Button(gui, text="Display Lane Status", command=lane.display_lane_status)
-        button3.pack()
+        button3.grid(row=1, column=2, padx=10, pady=10)
 
         button4 = tk.Button(gui, text="Exit Simulation", command=exit)
         button4.pack()

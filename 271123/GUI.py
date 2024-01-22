@@ -1,4 +1,3 @@
-
 import time
 import random
 import tkinter as tk
@@ -19,9 +18,8 @@ class SimulatorGUI:
         gui = tk.Tk()
         gui.title("Simulation Interface")
 
-        title_length = len(gui.title())
-        window_width = 200 + title_length * 10
-        gui.geometry(f"{window_width}x400")
+        window_width = 625
+        gui.geometry(f"{window_width}x50")
 
         start_button = tk.Button(gui, text="Start Simulation", command=self.start_simulation)
         start_button.grid(row=1, column=0, padx=10, pady=10)
@@ -32,7 +30,7 @@ class SimulatorGUI:
         stop_button = tk.Button(gui, text="Stop Simulation", command=self.stop_button)
         stop_button.grid(row=1, column=2, padx=10, pady=10)
 
-        exit_button = tk.Button(gui, text="Exit", command=self.exit_button)
+        exit_button = tk.Button(gui, text="Exit", command=exit)
         exit_button.grid(row=1, column=3, padx=10, pady=10)
 
         self.gui = gui
@@ -47,7 +45,7 @@ class SimulatorGUI:
         if self.simulation.is_running:
             self.simulation.main_loop()
             interval = random.randint(1,5)
-            self.gui.after(1000, self.spawn_customers)
+            self.gui.after(1000 * interval, self.spawn_customers)
 
     def display(self):
         self.simulation.display_cus_details()
@@ -57,9 +55,6 @@ class SimulatorGUI:
         print(f"Total Elapsed Time: {elapsed_time:.2f} seconds")
         self.simulation.stop_simulation()
         messagebox.showinfo("Simulation Stopped", "Simulation has been stopped.")
-
-    def exit_button(self):
-        self.gui.destroy()
 
     @staticmethod
     def clear_customer_data():

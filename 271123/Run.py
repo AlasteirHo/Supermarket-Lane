@@ -48,6 +48,7 @@ class Simulation:
 
     def main_loop(self):
         self.customer_creator()
+        lane.sort_customer()
 
     @staticmethod
     def customer_creator():
